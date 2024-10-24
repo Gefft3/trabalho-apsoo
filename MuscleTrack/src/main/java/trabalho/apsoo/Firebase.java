@@ -25,8 +25,40 @@ public class Firebase {
         }
     }
 
-    public boolean loadUserData(){
-        return false;
+    public boolean loadUserData(User u){
+        try{
+
+            URI finalUrl = new URI(this.firestoreBaseURL + u.getLocalID() + "?key=" + this.apiKey);
+
+            HttpURLConnection connection = (HttpURLConnection) finalUrl.toURL().openConnection();
+
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Accept", "application/json");
+            connection.setRequestProperty("Authorization", "Bearer " + u.getIdToken());
+
+            int responseCode = connection.getResponseCode();
+
+            if(responseCode == 200) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                StringBuilder response = new StringBuilder();
+
+                String inputLine;
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                JSONObject responseJSON = new JSONObject(response.toString());
+
+                u.loadFromJSON(responseJSON);
+
+                return true;
+            }
+            return false;
+
+        }catch (URISyntaxException | IOException e){
+            return false;
+        }
     }
 
     public boolean saveUserData(User u){
