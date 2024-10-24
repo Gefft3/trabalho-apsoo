@@ -1,6 +1,11 @@
 package trabalho.apsoo;
 
-public class Serie {
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Serie implements FBRequestBodyConvertible{
 
     int repeticoes;
     double peso;
@@ -12,7 +17,33 @@ public class Serie {
 
     @Override
     public String toString(){
-        return " Serie: " + this.repeticoes + ", " + this.peso;
+        return this.toJSON().toString();
+    }
+
+    public JSONObject toJSON(){
+        JSONObject obj = new JSONObject();
+        obj.put("rep", this.repeticoes);
+        obj.put("peso", this.peso);
+
+        return obj;
+    }
+
+    public JSONObject toFirebaseRequestBody(){
+
+        FBRequestBodyFactory f = new FBRequestBodyFactory();
+
+        List<String> keys = new ArrayList<String>();
+        List<JSONObject> values = new ArrayList<JSONObject>();
+
+        keys.add("peso");
+        keys.add("rep");
+
+        values.add(f.doubleValue(this.peso));
+        values.add(f.integerValue(this.repeticoes));
+
+        JSONObject fields = f.fields(keys, values);
+
+        return f.mapValue(fields);
     }
 
     public int getRepeticoes() {
@@ -30,4 +61,6 @@ public class Serie {
     public void setPeso(double peso) {
         this.peso = peso;
     }
+
+
 }

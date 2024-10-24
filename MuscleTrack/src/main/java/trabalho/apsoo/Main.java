@@ -1,35 +1,41 @@
 package trabalho.apsoo;
 
-
 import java.util.Date;
 
 public class Main {
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        User user = new User("teste", "teste@teste.br", "teste");
+    Firebase fb = new Firebase(System.getenv("FIREBASE_API_KEY"), System.getenv("AUTH_BASE_URL"),
+        System.getenv("FIREBASE_BASE_URL"));
 
-        user.Authenticate();
+    User user = new User("Luiz", "teste", "teste");
 
-        user.ciclo = new Ciclo(1, new Date());
+    fb.authenticateUser(user);
 
-        Treino t = new Treino("peito", 1);
+    user.setCiclo(new Ciclo(5, new Date()));
 
-        Exercicio e = new Exercicio("Supino máquina", 3);
+    Treino t = new Treino("peito", 2);
 
-        Serie s1 = new Serie(10, 10);
-        Serie s2 = new Serie(15, 10);
-        Serie s3 = new Serie(20, 10);
+    Exercicio e = new Exercicio("TESTE TESTE", 3);
 
-        e.AddSerie(s1);
-        e.AddSerie(s2);
-        e.AddSerie(s3);
+    Serie s1 = new Serie(100, 10);
+    Serie s2 = new Serie(15, 10);
+    Serie s3 = new Serie(20, 10);
 
-        t.addExercicio(e);
+    e.addSerie(s1);
+    e.addSerie(s2);
+    e.addSerie(s3);
 
-        user.ciclo.AddTreino(t);
+    t.addExercicio(e);
+    t.addExercicio(e);
 
+    user.getCiclo().addTreino(t);
+    user.getCiclo().addTreino(t);
+    user.getCiclo().addTreino(t);
+    user.getCiclo().addTreino(t);
+    user.getCiclo().addTreino(t);
 
-        System.out.println(user);
-    }
+    System.out.println(fb.saveUserData(user));
+  }
 
 }
