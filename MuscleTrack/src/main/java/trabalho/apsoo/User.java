@@ -6,31 +6,48 @@ import org.json.JSONObject;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
 public class User {
 
-    private String nome;
+    private String username;
     private String email;
     private String password;
     private String localID;
     private String idToken;
     private Ciclo ciclo;
 
-    public User(String nome, String email, String password){
-        this.nome = nome;
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(String username, String email, String password){
+        this.username = username;
         this.email = email;
         this.password = password;
     }
 
     // Talvez tenha alguma forma melhor de fazer isso, mas por enquanto funciona
     public boolean loadFromJSON(JSONObject data){
+
         JSONObject fields = data.getJSONObject("fields");
 
-        int duracao = fields.getJSONObject("duracao").getInt("integerValue");
-        String data_inicioISO = fields.getJSONObject("data_inicio").getString("timestampValue");
+        JSONObject userNameJSON = fields.getJSONObject("user_name");
+        String username =  userNameJSON.getString("stringValue");
+
+        this.username = username;
+
+        JSONObject ciclo = fields.getJSONObject("ciclo");
+        JSONObject cicloMapValue = ciclo.getJSONObject("mapValue");
+
+        JSONObject cicloFields = cicloMapValue.getJSONObject("fields");
+
+        int duracao = cicloFields.getJSONObject("duracao").getInt("integerValue");
+        String data_inicioISO = cicloFields.getJSONObject("data_inicio").getString("timestampValue");
 
         TimeZone tz = TimeZone.getTimeZone("UTC");
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
@@ -45,7 +62,7 @@ public class User {
             e.printStackTrace();
         }
 
-        JSONObject treinos = fields.getJSONObject("treinos");
+        JSONObject treinos = cicloFields.getJSONObject("treinos");
         JSONObject treinosArrayValue = treinos.getJSONObject("arrayValue");
         JSONArray treinosValues = treinosArrayValue.getJSONArray("values");
 
@@ -116,9 +133,26 @@ public class User {
         return true;
     }
 
+    public JSONObject toFirebaseRequestBody(){
+        FBRequestBodyFactory f = new FBRequestBodyFactory();
+
+        List<String> keys = new ArrayList<>();
+        keys.add("user_name");
+        keys.add("ciclo");
+
+        List<JSONObject> values = new ArrayList<>();
+
+        values.add(f.stringValue(this.username));
+
+        JSONObject ciclo = this.ciclo.toFirebaseRequestBody();
+        values.add(f.mapValue(ciclo));
+
+        return f.fields(keys, values);
+    }
+
     @Override
     public String toString(){
-        return " User: " + this.nome + " " + this.email + " " + this.password + " \n" + this.ciclo.toString();
+        return " User: " + this.username + " " + this.email + " " + this.password + " \n" + this.ciclo.toString();
     }
 
     public String getLocalID() {
@@ -161,11 +195,11 @@ public class User {
         this.ciclo = ciclo;
     }
 
-    public String getNome() {
-        return nome;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

@@ -66,7 +66,7 @@ public class Firebase {
 
             HttpURLConnection connection = getHttpURLConnection(u);
 
-            JSONObject body = u.getCiclo().toFirebaseRequestBody();
+            JSONObject body = u.toFirebaseRequestBody();
 
             OutputStream os = connection.getOutputStream();
 
