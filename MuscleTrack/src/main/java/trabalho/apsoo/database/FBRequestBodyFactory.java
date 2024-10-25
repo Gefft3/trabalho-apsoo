@@ -1,4 +1,4 @@
-package trabalho.apsoo;
+package trabalho.apsoo.database;
 
 import org.json.JSONObject;
 

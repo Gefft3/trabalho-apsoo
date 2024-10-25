@@ -1,6 +1,7 @@
 package trabalho.apsoo;
 
-import java.util.Date;
+import trabalho.apsoo.database.Firebase;
+import trabalho.apsoo.model.User;
 
 public class Main {
   public static void main(String[] args) {
@@ -10,9 +11,9 @@ public class Main {
 
     User user = new User("geffte.caetano@ufms.br", "teste123");
 
-    fb.registerUser(user);
+//    fb.registerUser(user);
 
-    //fb.authenticateUser(user);
+    fb.authenticateUser(user);
 
 //    user.setCiclo(new Ciclo(1, new Date()));
 //

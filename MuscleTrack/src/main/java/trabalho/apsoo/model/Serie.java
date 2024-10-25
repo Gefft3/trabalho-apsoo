@@ -1,11 +1,13 @@
-package trabalho.apsoo;
+package trabalho.apsoo.model;
 
 import org.json.JSONObject;
+import trabalho.apsoo.database.FBRequestBodyConvertible;
+import trabalho.apsoo.database.FBRequestBodyFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Serie implements FBRequestBodyConvertible{
+public class Serie implements FBRequestBodyConvertible {
 
     int repeticoes;
     double peso;

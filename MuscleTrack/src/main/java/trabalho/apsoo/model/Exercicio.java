@@ -1,10 +1,13 @@
-package trabalho.apsoo;
+package trabalho.apsoo.model;
 
 import java.util.List;
 import org.json.JSONObject;
+import trabalho.apsoo.database.FBRequestBodyConvertible;
+import trabalho.apsoo.database.FBRequestBodyFactory;
+
 import java.util.ArrayList;
 
-public class Exercicio implements FBRequestBodyConvertible{
+public class Exercicio implements FBRequestBodyConvertible {
 
   String nome;
   int qntSeries;

@@ -1,6 +1,7 @@
-package trabalho.apsoo;
+package trabalho.apsoo.database;
 
 import org.json.JSONObject;
+import trabalho.apsoo.model.User;
 
 import java.io.*;
 import java.net.*;

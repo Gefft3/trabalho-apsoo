@@ -1,7 +1,8 @@
-package trabalho.apsoo;
+package trabalho.apsoo.model;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import trabalho.apsoo.database.FBRequestBodyFactory;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

@@ -1,12 +1,14 @@
-package trabalho.apsoo;
+package trabalho.apsoo.model;
 
 import org.json.JSONObject;
+import trabalho.apsoo.database.FBRequestBodyConvertible;
+import trabalho.apsoo.database.FBRequestBodyFactory;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Ciclo implements FBRequestBodyConvertible{
+public class Ciclo implements FBRequestBodyConvertible {
 
     int duracao;
     Date inicio;
