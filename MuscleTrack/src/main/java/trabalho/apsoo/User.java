@@ -4,7 +4,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -37,9 +36,8 @@ public class User {
         JSONObject fields = data.getJSONObject("fields");
 
         JSONObject userNameJSON = fields.getJSONObject("user_name");
-        String username =  userNameJSON.getString("stringValue");
 
-        this.username = username;
+        this.username = userNameJSON.getString("stringValue");
 
         JSONObject ciclo = fields.getJSONObject("ciclo");
         JSONObject cicloMapValue = ciclo.getJSONObject("mapValue");
@@ -59,7 +57,7 @@ public class User {
             this.setCiclo(new Ciclo(duracao, date));
         }
         catch (Exception e) {
-            e.printStackTrace();
+            return false;
         }
 
         JSONObject treinos = cicloFields.getJSONObject("treinos");
@@ -128,7 +126,6 @@ public class User {
 
             this.getCiclo().treinos.add(t);
         }
-
 
         return true;
     }
