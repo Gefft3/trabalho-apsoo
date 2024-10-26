@@ -7,13 +7,15 @@ public class Main {
   public static void main(String[] args) {
 
     Firebase fb = new Firebase(System.getenv("FIREBASE_API_KEY"), System.getenv("AUTH_BASE_URL"),
-        System.getenv("FIREBASE_BASE_URL"));
+        System.getenv("FIREBASE_BASE_URL"), System.getenv("AUTH_REFRESH_URL"));
 
     User user = new User("geffte.caetano@ufms.br", "teste123");
 
 //    fb.registerUser(user);
 
     fb.authenticateUser(user);
+
+    fb.exchangeToken(user);
 
 //    user.setCiclo(new Ciclo(1, new Date()));
 //

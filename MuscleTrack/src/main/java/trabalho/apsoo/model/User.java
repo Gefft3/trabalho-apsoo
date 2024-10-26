@@ -18,6 +18,7 @@ public class User {
     private String password;
     private String localID;
     private String idToken;
+    private String refreshToken;
     private Ciclo ciclo;
 
     public User(String email, String password) {
@@ -148,9 +149,18 @@ public class User {
         return f.fields(keys, values);
     }
 
+
     @Override
     public String toString(){
         return " User: " + this.username + " " + this.email + " " + this.password + " \n" + this.ciclo.toString();
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
     }
 
     public String getLocalID() {
