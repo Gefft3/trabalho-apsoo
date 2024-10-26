@@ -21,6 +21,10 @@ public class User {
     private String refreshToken;
     private Ciclo ciclo;
 
+    public User(){
+
+    }
+
     public User(String email, String password) {
         this.email = email;
         this.password = password;

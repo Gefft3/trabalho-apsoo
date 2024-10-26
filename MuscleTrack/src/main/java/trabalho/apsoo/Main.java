@@ -2,20 +2,40 @@ package trabalho.apsoo;
 
 import trabalho.apsoo.database.Firebase;
 import trabalho.apsoo.model.User;
+import trabalho.apsoo.pages.Application;
+
+import javax.swing.*;
+import java.util.Objects;
 
 public class Main {
   public static void main(String[] args) {
 
-    Firebase fb = new Firebase(System.getenv("FIREBASE_API_KEY"), System.getenv("AUTH_BASE_URL"),
-        System.getenv("FIREBASE_BASE_URL"), System.getenv("AUTH_REFRESH_URL"));
 
-    User user = new User("geffte.caetano@ufms.br", "teste123");
+    SwingUtilities.invokeLater(() -> {
+      Application app = new Application();
+      app.setVisible(true);
+    });
+
+//    SwingUtilities.invokeLater(() -> {
+//
+//      Firebase fb = new Firebase(System.getenv("FIREBASE_API_KEY"), System.getenv("AUTH_BASE_URL"),
+//              System.getenv("FIREBASE_BASE_URL"), System.getenv("AUTH_REFRESH_URL"));
+//
+//      User user = new User();
+//
+//      LoginPage lp = new LoginPage(fb, user);
+//      lp.setVisible(true);
+//
+//
+//    });
+
+   // User user = new User("geffte.caetano@ufms.br", "teste123");
 
 //    fb.registerUser(user);
 
-    fb.authenticateUser(user);
+    //fb.authenticateUser(user);
 
-    fb.exchangeToken(user);
+    //fb.exchangeToken(user);
 
 //    user.setCiclo(new Ciclo(1, new Date()));
 //
