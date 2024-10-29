@@ -1,17 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="muscletrack.app.controller.HelloController"
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox styleClass="app" alignment="TOP_CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="muscletrack.app.controller.LoginController"
 >
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+    <VBox styleClass="title_pane" minHeight="50" alignment="CENTER">
+        <Label styleClass="title" text="Muscle Track"/>
+    </VBox>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Aperte Aqui" onAction="#onHelloButtonClick"/>
+    <VBox minHeight="600" alignment="CENTER">
+
+        <VBox styleClass="login_pane" alignment="CENTER_LEFT" maxWidth="500" minHeight="400">
+
+            <VBox alignment="CENTER">
+                <Label styleClass="login_label" text="Log In" alignment="TOP_CENTER"/>
+            </VBox>
+
+            <Label styleClass="label" text="E-mail"/>
+
+            <TextField styleClass="input" fx:id="emailInput"/>
+
+            <Label styleClass="label" text="Senha"/>
+
+            <PasswordField styleClass="input" fx:id="passwordInput"/>
+
+            <Label fx:id="errorText" styleClass="error_label"/>
+
+            <VBox styleClass="login_button_box" alignment="CENTER">
+                <Button styleClass="login_button" text="Log In" onAction="#onLoginButtonClick"/>
+                <Label text="Não possui conta? Registre-se aqui!" styleClass="register_label" onMouseClicked="#onRegisterLabelClick"/>
+            </VBox>
+
+
+        </VBox>
+
+    </VBox>
+
 </VBox>
