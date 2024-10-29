@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import muscletrack.app.database.Firebase;
 import muscletrack.app.model.User;
-
 import java.io.IOException;
 import java.util.Objects;
 

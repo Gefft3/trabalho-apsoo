@@ -19,17 +19,24 @@
 
             <Label styleClass="label" text="E-mail"/>
 
-            <TextField styleClass="input" fx:id="emailInput"/>
+            <VBox alignment="CENTER">
+                <TextField styleClass="input" fx:id="emailInput"/>
+            </VBox>
 
             <Label styleClass="label" text="Senha"/>
 
-            <PasswordField styleClass="input" fx:id="passwordInput"/>
+            <VBox alignment="CENTER">
+
+                <PasswordField styleClass="input" fx:id="passwordInput"/>
+
+            </VBox>
 
             <Label fx:id="errorText" styleClass="error_label"/>
 
             <VBox styleClass="login_button_box" alignment="CENTER">
                 <Button styleClass="login_button" text="Log In" onAction="#onLoginButtonClick"/>
-                <Label text="Não possui conta? Registre-se aqui!" styleClass="register_label" onMouseClicked="#onRegisterLabelClick"/>
+                <Label text="Não possui conta? Registre-se aqui!" styleClass="register_label"
+                       onMouseClicked="#onRegisterLabelClick"/>
             </VBox>
 
 
