@@ -18,6 +18,7 @@ public class App extends Application {
     private static Scene scene;
     private static Parent loginPage;
     private static Parent registerPage;
+    private static Parent homePage;
 
 
     @Override
@@ -29,10 +30,12 @@ public class App extends Application {
 
         loginPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-view.fxml")));
         registerPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("register-view.fxml")));
+        homePage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("home-view.fxml")));
 
         scene = new Scene(loginPage);
         scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles.css")).toExternalForm());
 
+        scene.setRoot(homePage);
         stage.setTitle("Muscle Track!");
         stage.setScene(scene);
         stage.show();

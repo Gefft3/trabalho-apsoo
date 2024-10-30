@@ -26,9 +26,7 @@
             <Label styleClass="label" text="Senha"/>
 
             <VBox alignment="CENTER">
-
                 <PasswordField styleClass="input" fx:id="passwordInput"/>
-
             </VBox>
 
             <Label fx:id="errorText" styleClass="error_label"/>

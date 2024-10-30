@@ -1,6 +1,6 @@
 .app{
     -fx-background-color: #111111;
-     -fx-font-family: "sans-serif";
+    -fx-font-family: "sans-serif";
 }
 
 .title_pane{
@@ -66,3 +66,33 @@
     -fx-font-size: 16;
     -fx-padding: 25 0 10 0;
 }
+
+.day_box{
+    -fx-background-color: #283155;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 24;
+}
+
+.day_label{
+    -fx-padding: 10;
+}
+
+.treino_label{
+    -fx-padding: 10 0 10 0;
+}
+
+.date_label{
+    -fx-padding: 2;
+    -fx-opacity: 0.5;
+}
+
+.treino_box{
+    -fx-border-color: #FFFFFF;
+}
+
+.linha{
+    -fx-fill: red;
+    -fx-background-color: red;
+}
+
+.calendar{}

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Line?>
+<VBox styleClass="app" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="muscletrack.app.controller.HomeController"
+      prefHeight="400.0" prefWidth="600.0"
+      minHeight="700" minWidth="1000"
+      alignment="TOP_CENTER">
+
+    <VBox styleClass="title_pane" minHeight="50" alignment="CENTER">
+        <Label styleClass="title" text="Muscle Track"/>
+    </VBox>
+
+    <GridPane fx:id="calendar" styleClass="calendar" alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="15.0"/>
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="15.0"/>
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="15.0"/>
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="15.0"/>
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="15.0"/>
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="15.0"/>
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="15.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints vgrow="NEVER" minHeight="10" percentHeight="10.0"/>
+            <RowConstraints vgrow="NEVER" minHeight="10" percentHeight="18" prefHeight="200"/>
+            <RowConstraints vgrow="NEVER" minHeight="10" percentHeight="18"/>
+            <RowConstraints vgrow="NEVER" minHeight="10" percentHeight="18"/>
+            <RowConstraints vgrow="NEVER" minHeight="10" percentHeight="18"/>
+            <RowConstraints vgrow="NEVER" minHeight="10" percentHeight="18"/>
+        </rowConstraints>
+        <VBox styleClass="day_box" alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <Label styleClass="day_label">Dom</Label>
+        </VBox>
+        <VBox styleClass="day_box" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <Label styleClass="day_label">Seg</Label>
+        </VBox>
+        <VBox styleClass="day_box" alignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="0">
+            <Label styleClass="day_label">Ter</Label>
+        </VBox>
+        <VBox styleClass="day_box" alignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="0">
+            <Label styleClass="day_label">Qua</Label>
+        </VBox>
+        <VBox styleClass="day_box" alignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="0">
+            <Label styleClass="day_label">Qui</Label>
+        </VBox>
+        <VBox styleClass="day_box" alignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="0">
+            <Label styleClass="day_label">Sex</Label>
+        </VBox>
+        <VBox styleClass="day_box" alignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="0">
+            <Label styleClass="day_label">Sáb</Label>
+        </VBox>
+
+
+
+    </GridPane>
+
+
+</VBox>
