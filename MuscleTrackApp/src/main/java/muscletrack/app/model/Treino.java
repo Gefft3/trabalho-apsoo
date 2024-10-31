@@ -74,4 +74,27 @@ public class Treino implements FBRequestBodyConvertible {
     return f.mapValue(fields);
   }
 
+  public String getTitulo(){
+    return this.titulo;
+  }
+
+  public int getQntExercicios() {
+    return qntExercicios;
+  }
+
+  public void setQntExercicios(int qntExercicios) {
+    this.qntExercicios = qntExercicios;
+  }
+
+  public List<Exercicio> getExercicios() {
+    return exercicios;
+  }
+
+  public void setExercicios(List<Exercicio> exercicios) {
+    this.exercicios = exercicios;
+  }
+
+  public void setTitulo(String titulo) {
+    this.titulo = titulo;
+  }
 }

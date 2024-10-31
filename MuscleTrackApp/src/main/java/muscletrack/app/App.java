@@ -30,13 +30,11 @@ public class App extends Application {
 
         loginPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-view.fxml")));
         registerPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("register-view.fxml")));
-        homePage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("home-view.fxml")));
 
         scene = new Scene(loginPage);
         scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles.css")).toExternalForm());
 
-        scene.setRoot(homePage);
-        stage.setTitle("Muscle Track!");
+        stage.setTitle("");
         stage.setScene(scene);
         stage.show();
     }
@@ -54,7 +52,12 @@ public class App extends Application {
     }
 
     public static void changeToHome(){
-        System.out.println("Tem que fazer isso ainda :D");
+        try {
+            homePage = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("home-view.fxml")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        scene.setRoot(homePage);
     }
 
 }

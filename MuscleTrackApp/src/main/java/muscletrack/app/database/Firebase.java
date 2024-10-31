@@ -62,7 +62,7 @@ public class Firebase {
       }
   }
 
-  public boolean loadUserData(User u) {
+  public void loadUserData(User u) {
     try {
 
       URI finalUrl = new URI(this.firestoreBaseURL + u.getLocalID() + "?key=" + this.apiKey);
@@ -75,15 +75,15 @@ public class Firebase {
 
       int responseCode = connection.getResponseCode();
 
+      System.out.println(responseCode);
+
       if (responseCode == 200) {
         JSONObject responseJSON = readResponse(connection.getInputStream());
 
-        return u.loadFromJSON(responseJSON);
+        u.loadFromJSON(responseJSON);
       }
-      return false;
 
     } catch (URISyntaxException | IOException e) {
-      return false;
     }
   }
 
@@ -215,5 +215,4 @@ public class Firebase {
 
     return new JSONObject(res.toString());
   }
-
 }

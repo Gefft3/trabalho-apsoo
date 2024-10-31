@@ -18,6 +18,18 @@ public class Ciclo implements FBRequestBodyConvertible {
 
     }
 
+    public void setDuracao(int duracao){
+        this.duracao = duracao;
+    }
+
+    public int getDuracao(){
+        return this.duracao;
+    }
+
+    public List<Treino> getTreinos() {
+        return treinos;
+    }
+
     public Ciclo(int duracao, Date inicio){
         this.duracao = duracao;
         this.inicio = inicio;

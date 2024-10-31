@@ -4,6 +4,8 @@
 <?import javafx.scene.layout.*?>
 <VBox styleClass="app" alignment="TOP_CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="muscletrack.app.controller.LoginController"
+      prefHeight="400.0" prefWidth="600.0"
+      minHeight="800" minWidth="1000"
 >
     <VBox styleClass="title_pane" minHeight="50" alignment="CENTER">
         <Label styleClass="title" text="Muscle Track"/>
@@ -26,7 +28,7 @@
             <Label styleClass="label" text="Senha"/>
 
             <VBox alignment="CENTER">
-                <PasswordField styleClass="input" fx:id="passwordInput"/>
+                <PasswordField styleClass="input" fx:id="passwordInput" onKeyPressed="#onPasswordEnterPressed"/>
             </VBox>
 
             <Label fx:id="errorText" styleClass="error_label"/>

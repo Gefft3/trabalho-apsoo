@@ -4,7 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import muscletrack.app.App;
+
+import java.util.Objects;
 
 public class LoginController {
     @FXML
@@ -16,6 +19,21 @@ public class LoginController {
 
     @FXML
     protected void onLoginButtonClick() {
+        logar();
+    }
+
+    @FXML
+    public void onRegisterLabelClick() {
+        App.changeToRegister();
+    }
+
+    public void onPasswordEnterPressed(KeyEvent keyEvent) {
+        if(Objects.equals(keyEvent.getCode().toString(), "ENTER")){
+            logar();
+        }
+    }
+
+    private void logar(){
         String email = emailInput.getCharacters().toString();
         String pass = passwordInput.getCharacters().toString();
 
@@ -32,11 +50,5 @@ public class LoginController {
                 App.changeToHome();
             }
         }
-
-    }
-
-    @FXML
-    public void onRegisterLabelClick() {
-        App.changeToRegister();
     }
 }
