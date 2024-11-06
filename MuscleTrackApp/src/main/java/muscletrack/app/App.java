@@ -22,7 +22,6 @@ public class App extends Application {
     private static Stage stage;
 
 
-
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -47,15 +46,15 @@ public class App extends Application {
         launch();
     }
 
-    public static void changeToRegister(){
+    public static void changeToRegister() {
         scene.setRoot(registerPage);
     }
 
-    public static void changeToLogin(){
+    public static void changeToLogin() {
         scene.setRoot(loginPage);
     }
 
-    public static void changeToPlanejamento(){
+    public static void changeToPlanejamento() {
         System.out.println("GEFFTE TEM QUE FAZER A TELA DE CADASTRO DE PLANEJAMENTO");
     }
 
@@ -63,7 +62,7 @@ public class App extends Application {
         System.out.println("GEFFTE TEM QUE FAZER A TELA DE USUÁRIO TBM!");
     }
 
-    public static void changeToHome(){
+    public static void changeToHome() {
         try {
             homePage = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("home-view.fxml")));
         } catch (IOException e) {
@@ -74,3 +73,4 @@ public class App extends Application {
 
     }
 
+}
