@@ -52,6 +52,10 @@ public class FBRequestBodyFactory {
         return new JSONObject("{timestampValue:'" + isoTimestamp + "'}");
     }
 
+    public JSONObject timestampValue(String timestamp){
+        return new JSONObject("{timestampValue:'" + timestamp + "'}");
+    }
+
     public JSONObject integerValue(int value){
         return new JSONObject("{integerValue:" + value + "}");
     }

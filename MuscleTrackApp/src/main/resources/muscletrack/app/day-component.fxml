@@ -19,5 +19,5 @@
         <Line layoutX="50.0" layoutY="50.0" endX="100" stroke="#FFFFFF"/>
         <Label styleClass="treino_label">-</Label>
     </VBox>
-    <Label visible="false">1</Label>
+    <Label visible="true">1</Label>
 </VBox>

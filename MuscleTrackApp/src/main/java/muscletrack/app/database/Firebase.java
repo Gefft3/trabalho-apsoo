@@ -75,8 +75,6 @@ public class Firebase {
 
       int responseCode = connection.getResponseCode();
 
-      System.out.println(responseCode);
-
       if (responseCode == 200) {
         JSONObject responseJSON = readResponse(connection.getInputStream());
 
@@ -89,18 +87,21 @@ public class Firebase {
 
   public boolean saveUserData(User u) {
     try {
-
       URI finalUrl = new URI(this.firestoreBaseURL + u.getLocalID() + "?key=" + this.apiKey);
 
       HttpURLConnection connection = (HttpURLConnection) finalUrl.toURL().openConnection();
 
       connection.setDoOutput(true);
+      connection.setDoInput(true);
       connection.setRequestMethod("POST");
       connection.setRequestProperty("X-HTTP-Method-Override", "PATCH"); // Por algum motivo o metodo PATCH não exite na
                                                                         // biblioteca
       connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
       connection.setRequestProperty("Accept", "application/json");
       connection.setRequestProperty("Authorization", "Bearer " + u.getIdToken());
+
+      System.out.println(u.getIdToken());
+      System.out.println(u.getLocalID());
 
       JSONObject body = u.toFirebaseRequestBody();
 
@@ -110,6 +111,12 @@ public class Firebase {
       os.close();
 
       int responseCode = connection.getResponseCode();
+
+      System.out.println(responseCode);
+
+      JSONObject responseJSON = readResponse(connection.getInputStream());
+
+      System.out.println(responseJSON);
 
       if (responseCode == 200) {
         System.out.println("Data Saved!");

@@ -9,16 +9,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import muscletrack.app.App;
-import muscletrack.app.model.Ciclo;
-import muscletrack.app.model.Treino;
-import muscletrack.app.model.User;
+import muscletrack.app.model.*;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.YearMonth;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class HomeController {
     @FXML
@@ -26,13 +23,47 @@ public class HomeController {
 
     @FXML
     private void initialize() {
+
         App.fb.loadUserData(App.user);
-        System.out.println(App.user);
+
+//        Ciclo c = new Ciclo(7, new Date());
+//        Treino t1= new Treino("peito", 1);
+//        Treino t7= new Treino("peito1", 1);
+//        Treino t2= new Treino("peito2", 1);
+//        Treino t3= new Treino("peito3", 1);j
+//        Treino t4= new Treino("peito4", 1);
+//        Treino t5= new Treino("peito5", 1);
+//        Treino t6= new Treino("peito6", 1);
+//        Exercicio ex = new Exercicio("supino", 1);
+//        Serie s = new Serie(10, 10);
+//        ex.addSerie(s);
+//        t1.addExercicio(ex);
+//        t7.addExercicio(ex);
+//        t2.addExercicio(ex);
+//        t3.addExercicio(ex);
+//        t4.addExercicio(ex);
+//        t5.addExercicio(ex);
+//        t6.addExercicio(ex);
+//        c.getTreinos().add(t1);
+//        c.getTreinos().add(t7);
+//        c.getTreinos().add(t2);
+//        c.getTreinos().add(t3);
+//        c.getTreinos().add(t4);
+//        c.getTreinos().add(t5);
+//        c.getTreinos().add(t6);
+//
+//        App.user.setCiclo(c);
+//
+//        App.fb.saveUserData(App.user);
+
+
         try {
             Calendar cal = Calendar.getInstance();
             int diaAtual = cal.get(Calendar.DAY_OF_MONTH);
             int diadaSemana = cal.get(Calendar.DAY_OF_WEEK) - 1; // 0 à 6 (dom a sab)
             int semana = cal.get(Calendar.WEEK_OF_MONTH);
+            int ano = cal.get(Calendar.YEAR);
+            int mes = cal.get(Calendar.MONTH) + 1;
 
             YearMonth mesAtual = YearMonth.of(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1);
             int diasMesAtual = mesAtual.lengthOfMonth();
@@ -55,6 +86,21 @@ public class HomeController {
                     lb.setText(String.valueOf(diaInicial));
                     diaInicial += 1;
                     if (quantidadeMesAnterior == 0) {
+                        String dataAtual;
+                        if(diaInicial < 10) {
+                            dataAtual = ano + "-" + mes + "-0" + String.valueOf(diaInicial-1);
+                        }else{
+                            dataAtual = ano + "-" + mes + "-" + String.valueOf(diaInicial-1);
+                        }
+
+                        VBox treinoBox = (VBox) child.getChildren().get(1);
+                        Label treinoRealizado = (Label) treinoBox.getChildren().getLast();
+
+                        Treino t = App.user.getTreinoRealizadoByData(dataAtual).getTreino();
+                        if(t != null){
+                            treinoRealizado.setText(t.getTitulo());
+                        }
+
                         if (diaInicial - 1 == diaAtual) {
                             lb.setStyle("-fx-opacity: 1;");
                         }
@@ -81,6 +127,7 @@ public class HomeController {
     public void updateTreinos(User u) {
 
         int diaDoCiclo = 1;
+        Ciclo ciclo = u.getCiclo();
 
         for (int i = 0; i < 35; i++) {
             VBox dia = (VBox) calendar.getChildren().get(i+7);
@@ -91,13 +138,15 @@ public class HomeController {
 
             Label treinoPlanejado = (Label) treinos.getChildren().getFirst();
 
-            treinoPlanejado.setText(u.getCiclo().getTreinos().get(diaDoCiclo-1).getTitulo());
+            if(ciclo != null){
+                treinoPlanejado.setText(ciclo.getTreinos().get(diaDoCiclo-1).getTitulo());
+                diaDoCiclo += 1;
 
-            diaDoCiclo += 1;
-
-            if (diaDoCiclo > u.getCiclo().getDuracao()){
-                diaDoCiclo = 1;
+                if (diaDoCiclo > u.getCiclo().getDuracao()){
+                    diaDoCiclo = 1;
+                }
             }
+
 
         }
     }
