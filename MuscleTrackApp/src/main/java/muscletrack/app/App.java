@@ -19,6 +19,8 @@ public class App extends Application {
     private static Parent loginPage;
     private static Parent registerPage;
     private static Parent homePage;
+    private static Stage stage;
+
 
 
     @Override
@@ -33,6 +35,8 @@ public class App extends Application {
 
         scene = new Scene(loginPage);
         scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles.css")).toExternalForm());
+
+        App.stage = stage;
 
         stage.setTitle("");
         stage.setScene(scene);
@@ -51,6 +55,14 @@ public class App extends Application {
         scene.setRoot(loginPage);
     }
 
+    public static void changeToPlanejamento(){
+        System.out.println("GEFFTE TEM QUE FAZER A TELA DE CADASTRO DE PLANEJAMENTO");
+    }
+
+    public static void changeToUser() {
+        System.out.println("GEFFTE TEM QUE FAZER A TELA DE USUÁRIO TBM!");
+    }
+
     public static void changeToHome(){
         try {
             homePage = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("home-view.fxml")));
@@ -58,6 +70,8 @@ public class App extends Application {
             throw new RuntimeException(e);
         }
         scene.setRoot(homePage);
+        App.stage.setMaximized(true);
+
     }
 
 }

@@ -20,20 +20,23 @@ public class User {
     private String idToken;
     private String refreshToken;
     private Ciclo ciclo;
+    private List<TreinoRealizado> treinosRealizados;
 
     public User(){
-
+        this.treinosRealizados = new ArrayList<>();
     }
 
     public User(String email, String password) {
         this.email = email;
         this.password = password;
+        this.treinosRealizados = new ArrayList<>();
     }
 
     public User(String username, String email, String password){
         this.username = username;
         this.email = email;
         this.password = password;
+        this.treinosRealizados = new ArrayList<>();
     }
 
     // Talvez tenha alguma forma melhor de fazer isso, mas por enquanto funciona
@@ -157,6 +160,14 @@ public class User {
     @Override
     public String toString(){
         return " User: " + this.username + " " + this.email + " " + this.password + " \n" + this.ciclo.toString();
+    }
+
+    public List<TreinoRealizado> getTreinosRealizados() {
+        return treinosRealizados;
+    }
+
+    public void setTreinosRealizados(List<TreinoRealizado> treinosRealizados) {
+        this.treinosRealizados = treinosRealizados;
     }
 
     public String getRefreshToken() {

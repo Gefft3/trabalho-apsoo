@@ -2,28 +2,33 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
 <VBox styleClass="app" xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="muscletrack.app.controller.HomeController"
       prefHeight="400.0" prefWidth="600.0"
-      minHeight="800" minWidth="1000"
+      minHeight="Infinity" minWidth="1000"
       alignment="TOP_CENTER">
 
     <GridPane styleClass="title_pane" minHeight="50">
         <columnConstraints>
             <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="10.0"/>
-            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="33.0"/>
-            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="58.0"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="80.0"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="10.0"/>
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints vgrow="ALWAYS" minHeight="10" percentHeight="100.0"/>
+            <RowConstraints vgrow="ALWAYS" minHeight="50" percentHeight="100.0"/>
         </rowConstraints>
-        <VBox alignment="CENTER_LEFT" GridPane.columnIndex="0" GridPane.rowIndex="0">
-            <Button>Planejamento</Button>
+        <VBox styleClass="planejamento_button_box" alignment="CENTER_LEFT" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <Button styleClass="planejamento_button" onAction="#planejamentoButtonClick">Planejamento</Button>
         </VBox>
-        <VBox alignment="CENTER_LEFT" GridPane.columnIndex="2" GridPane.rowIndex="0">
+        <VBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="0">
             <Label styleClass="title" text="Muscle Track"/>
         </VBox>
+        <VBox styleClass="user_button_box" alignment="CENTER_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                <Button styleClass="user_button" onAction="#userButtonClick"> Luiz Gustavo </Button>
+        </VBox>
+
     </GridPane>
 
     <GridPane fx:id="calendar" styleClass="calendar" alignment="CENTER">

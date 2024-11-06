@@ -9,11 +9,15 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="muscletrack.app.controller.DayController" fx:id="treinoBox" styleClass="treino_box" GridPane.columnIndex="0" GridPane.rowIndex="1">
-    <Label styleClass="date_label"> 1 </Label>
+      fx:controller="muscletrack.app.controller.DayController" fx:id="treinoBox" styleClass="treino_box"
+      GridPane.columnIndex="0" GridPane.rowIndex="1"
+      onMouseClicked="#diaClicado"
+>
+    <Label styleClass="date_label">1</Label>
     <VBox alignment="CENTER">
         <Label styleClass="treino_label">Descanso</Label>
         <Line layoutX="50.0" layoutY="50.0" endX="100" stroke="#FFFFFF"/>
         <Label styleClass="treino_label">-</Label>
     </VBox>
+    <Label visible="false">1</Label>
 </VBox>

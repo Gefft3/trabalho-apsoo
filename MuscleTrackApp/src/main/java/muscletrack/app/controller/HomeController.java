@@ -1,5 +1,6 @@
 package muscletrack.app.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -84,6 +85,9 @@ public class HomeController {
         for (int i = 0; i < 35; i++) {
             VBox dia = (VBox) calendar.getChildren().get(i+7);
             VBox treinos = (VBox) dia.getChildren().get(1);
+            Label diaCiclo = (Label) dia.getChildren().getLast();
+
+            diaCiclo.setText(String.valueOf(diaDoCiclo));
 
             Label treinoPlanejado = (Label) treinos.getChildren().getFirst();
 
@@ -96,5 +100,13 @@ public class HomeController {
             }
 
         }
+    }
+
+    public void planejamentoButtonClick(ActionEvent actionEvent) {
+        App.changeToPlanejamento();
+    }
+
+    public void userButtonClick(ActionEvent actionEvent) {
+        App.changeToUser();
     }
 }
