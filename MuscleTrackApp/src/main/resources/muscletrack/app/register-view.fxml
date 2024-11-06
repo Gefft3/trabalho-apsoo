@@ -6,6 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.text.Text?>
 <VBox styleClass="app" alignment="TOP_CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="muscletrack.app.controller.RegisterController"
 >
@@ -14,4 +15,73 @@
         <Label styleClass="title" text="Muscle Track"/>
     </VBox>
 
+    <GridPane minHeight="800"  minWidth="1000" prefWidth="1000" maxWidth="800" alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="40.0"/>
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="60.0"/>
+        </columnConstraints>
+
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="redirect_register_pane" alignment="CENTER" maxWidth="400" minHeight="600">
+
+            <VBox alignment="TOP_CENTER">
+                <Label styleClass="label_Register_intro" text="Bem-vindo ao Muscle Track" alignment="TOP_CENTER"/>
+            </VBox>
+
+            <VBox styleClass="register_text" alignment="CENTER">
+                <Label styleClass="intro_text" text="${'Cadastre seus treinos e monitore seu \npogresso de forma fácil, rápida e intuitiva'}"/>
+            </VBox>
+
+            <VBox styleClass="redirect_login" alignment="CENTER">
+                <Label styleClass = "redirect_login_text" text="Caso já possua uma conta, acesse aqui."  onMouseClicked="#onLoginLabelClick"/>
+
+            </VBox>
+
+
+        </VBox>
+
+        <VBox GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="register_pane" alignment="CENTER" maxWidth="600" minHeight="600">
+            <Label styleClass="register_label" text="Registrar-se" alignment="TOP_CENTER"/>
+
+            <VBox alignment="CENTER">
+                <VBox alignment="CENTER_LEFT">
+                    <Label  styleClass="label_register" text="Nome:"/>
+                </VBox>
+
+                <TextField styleClass="input_register" fx:id = "nomeInput"/>
+
+            </VBox>
+
+
+            <VBox alignment="CENTER">
+                <VBox alignment="CENTER_LEFT">
+                    <Label styleClass="label_register" text="E-mail:"/>
+                </VBox>
+
+                <TextField styleClass="input_register" fx:id="emailInput"/>
+
+            </VBox>
+            <VBox alignment="CENTER" >
+                <VBox alignment="CENTER_LEFT">
+                    <Label styleClass="label_register" text="Senha:"/>
+                </VBox>
+
+                <PasswordField styleClass="input_register" fx:id="passwordInput"/>
+            </VBox>
+
+            <VBox alignment="CENTER">
+                <VBox>
+                    <Label styleClass="label_register" text="Confirmar senha:"/>
+                </VBox>
+                <PasswordField styleClass="input_register" fx:id="confirmPasswordInput" />
+            </VBox>
+            <Label fx:id="errorText" styleClass="error_label"/>
+
+            <VBox styleClass="register_button_box" alignment="CENTER">
+                <Button styleClass="register_button" text="Cadastrar" onAction="#onRegisterButtonClick"/>
+            </VBox>
+
+
+        </VBox>
+
+    </GridPane>
 </VBox>
