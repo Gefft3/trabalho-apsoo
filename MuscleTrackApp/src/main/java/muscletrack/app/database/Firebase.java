@@ -62,7 +62,7 @@ public class Firebase {
         }
     }
 
-    public void loadUserData(User u) {
+    public boolean loadUserData(User u) {
         try {
 
             URI finalUrl = new URI(this.firestoreBaseURL + u.getLocalID() + "?key=" + this.apiKey);
@@ -75,13 +75,24 @@ public class Firebase {
 
             int responseCode = connection.getResponseCode();
 
+            System.out.println(responseCode);
+
             if (responseCode == 200) {
                 JSONObject responseJSON = readResponse(connection.getInputStream());
 
                 u.loadFromJSON(responseJSON);
+
+                return true;
+
+            }else{
+                JSONObject responseJSON = readResponse(connection.getInputStream());
+
+                System.out.println(responseJSON);
+                return false;
             }
 
         } catch (URISyntaxException | IOException e) {
+            return false;
         }
     }
 
@@ -197,6 +208,8 @@ public class Firebase {
                 u.setIdToken(responseJSON.getString("idToken"));
                 u.setLocalID(responseJSON.getString("localId"));
                 u.setRefreshToken(responseJSON.getString("refreshToken"));
+
+                System.out.println(u.getLocalID());
                 return true;
             }
             return false;
