@@ -6,14 +6,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import muscletrack.app.App;
 import muscletrack.app.model.*;
+import muscletrack.app.utils.DateUtils;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.YearMonth;
 import java.util.*;
 
@@ -58,17 +55,17 @@ public class HomeController {
 
 
         try {
-            Calendar cal = Calendar.getInstance();
-            int diaAtual = cal.get(Calendar.DAY_OF_MONTH);
-            int diadaSemana = cal.get(Calendar.DAY_OF_WEEK) - 1; // 0 à 6 (dom a sab)
-            int semana = cal.get(Calendar.WEEK_OF_MONTH);
-            int ano = cal.get(Calendar.YEAR);
-            int mes = cal.get(Calendar.MONTH) + 1;
+            DateUtils dt = new DateUtils();
+            int diaAtual = dt.getToday();
+            int diadaSemana = dt.getWeekDay();
+            int semana = dt.getMonthWeek();
+            int ano = dt.getYear();
+            int mes = dt.getMonth();
 
-            YearMonth mesAtual = YearMonth.of(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1);
+            YearMonth mesAtual = YearMonth.of(dt.getYear(), dt.getMonth());
             int diasMesAtual = mesAtual.lengthOfMonth();
 
-            YearMonth mesAnterior = YearMonth.of(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH));
+            YearMonth mesAnterior = YearMonth.of(dt.getYear(), dt.getMonth());
             int diasMesAnterior = mesAnterior.lengthOfMonth();
 
             int diaInicial = diaAtual - ((semana - 1) * 7) - diadaSemana;

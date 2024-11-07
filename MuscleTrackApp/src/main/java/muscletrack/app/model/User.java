@@ -1,5 +1,6 @@
 package muscletrack.app.model;
 
+import muscletrack.app.utils.DateUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import muscletrack.app.database.FBRequestBodyFactory;
@@ -138,18 +139,9 @@ public class User {
         int duracao = cicloFields.getJSONObject("duracao").getInt("integerValue");
         String data_inicioISO = cicloFields.getJSONObject("data_inicio").getString("timestampValue");
 
-        TimeZone tz = TimeZone.getTimeZone("UTC");
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-        df.setTimeZone(tz);
+        DateUtils dt = new DateUtils();
 
-        try {
-            // Parse the ISO 8601 string and convert to Date
-            Date date = df.parse(data_inicioISO);
-            this.setCiclo(new Ciclo(duracao, date));
-        } catch (Exception e) {
-            return false;
-        }
-
+        this.setCiclo(new Ciclo(duracao, dt.convertIsoToDate(data_inicioISO)));
 
         JSONObject treinos = cicloFields.getJSONObject("treinos");
         JSONObject treinosArrayValue = treinos.getJSONObject("arrayValue");
@@ -253,23 +245,14 @@ public class User {
         return " User: " + this.username + " " + this.email + " " + this.password + " \n" + this.ciclo.toString();
     }
 
-    public TreinoRealizado getTreinoRealizadoByData(String date) {
-        TimeZone tz = TimeZone.getTimeZone("UTC");
-        DateFormat d = new SimpleDateFormat("yyyy-MM-dd");
-        d.setTimeZone(tz);
+    public TreinoRealizado getTreinoRealizadoByData(String dataYMD) {
 
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-        df.setTimeZone(tz);
+        DateUtils dt = new DateUtils();
 
         for (TreinoRealizado t : this.treinosRealizados) {
-            String data;
-            try {
-                data = d.format(df.parse(t.getDateISO()));
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
+            String data = dt.convertIsoToYmd(t.getDateISO());
 
-            if (data.equals(date)) {
+            if (data.equals(dataYMD)) {
                 return t;
             }
         }
