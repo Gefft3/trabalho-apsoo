@@ -40,10 +40,15 @@ public class DayController {
         Label diaDoCiclo = (Label) box.getChildren().getLast();
 
         t.setTreino(App.user.getCiclo().getTreinos().get(Integer.parseInt(diaDoCiclo.getText()) - 1));
-        App.user.getTreinosRealizados().add(t);
 
+        TreinoRealizado tr = App.user.getTreinoRealizadoByData(isoTimestamp);
+        if(tr == null){
+            App.user.getTreinosRealizados().add(t);
+            App.fb.saveUserData(App.user);
+        }else{
+            System.out.println("Já há um treino cadastrado para esse dia. Só é possível editá-lo!");
+        }
 
-        App.fb.saveUserData(App.user);
 
     }
 }
