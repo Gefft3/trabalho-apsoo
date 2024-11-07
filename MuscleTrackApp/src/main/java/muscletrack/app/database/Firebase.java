@@ -160,10 +160,6 @@ public class Firebase {
       } else if (responseCode == 400) {
         System.out.println("Não foi possível cadastrar");
       }
-
-      JSONObject responseJSON = readResponse(connection.getInputStream());
-
-      System.out.println(responseJSON);
       return false;
     } catch (URISyntaxException | IOException e) {
       throw new RuntimeException(e);

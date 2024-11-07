@@ -34,17 +34,14 @@ public class DayController {
             throw new RuntimeException(e);
         }
 
-        System.out.println(isoTimestamp);
 
         TreinoRealizado t = new TreinoRealizado(isoTimestamp);
 
         Label diaDoCiclo = (Label) box.getChildren().getLast();
 
         t.setTreino(App.user.getCiclo().getTreinos().get(Integer.parseInt(diaDoCiclo.getText()) - 1));
-        System.out.println(t.getTreino());
         App.user.getTreinosRealizados().add(t);
 
-        System.out.println(App.user.toFirebaseRequestBody());
 
         App.fb.saveUserData(App.user);
 

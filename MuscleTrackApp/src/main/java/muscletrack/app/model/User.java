@@ -270,9 +270,7 @@ public class User {
                 throw new RuntimeException(e);
             }
 
-            System.out.println(data + " " + date    );
             if(data.equals(date)){
-                System.out.println("é igual");
                 return t;
             }
         }
