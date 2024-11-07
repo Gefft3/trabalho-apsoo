@@ -1,0 +1,20 @@
+.user_pane{
+    -fx-background-color: #0e0d2c;
+}
+
+.greetingPane{
+    -fx-background-radius: 5;
+    -fx-background-color: #EFF0F1;
+    -fx-padding: 2 0 2 0;
+}
+
+.greeting{
+    -fx-text-fill: #263880;
+    -fx-font-size: 40;
+    -fx-font-weight: bold;
+}
+
+.user_data_label{
+    -fx-font-size: 28;
+    -fx-font-weight: bold;
+}

@@ -19,6 +19,7 @@ public class App extends Application {
     private static Parent loginPage;
     private static Parent registerPage;
     private static Parent homePage;
+    private static Parent userPage;
     private static Stage stage;
 
 
@@ -31,9 +32,14 @@ public class App extends Application {
 
         loginPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-view.fxml")));
         registerPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("register-view.fxml")));
+        userPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("user-view.fxml")));
 
         scene = new Scene(loginPage);
         scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("login.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("register.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("home.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("user.css")).toExternalForm());
 
         App.stage = stage;
 
@@ -48,6 +54,7 @@ public class App extends Application {
 
     public static void changeToRegister() {
         scene.setRoot(registerPage);
+        App.stage.setWidth(1200);
     }
 
     public static void changeToLogin() {
@@ -59,7 +66,7 @@ public class App extends Application {
     }
 
     public static void changeToUser() {
-        System.out.println("GEFFTE TEM QUE FAZER A TELA DE USUÁRIO TBM!");
+        scene.setRoot(userPage);
     }
 
     public static void changeToHome() {

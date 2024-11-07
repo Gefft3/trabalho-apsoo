@@ -12,34 +12,30 @@
     </VBox>
 
     <VBox minHeight="600" alignment="CENTER">
-
         <VBox styleClass="login_pane" alignment="CENTER_LEFT" maxWidth="500" minHeight="400">
-
             <VBox alignment="CENTER">
                 <Label styleClass="login_label" text="Log In" alignment="TOP_CENTER"/>
             </VBox>
 
-            <Label styleClass="label" text="E-mail"/>
+            <Label styleClass="input_label" text="E-mail"/>
 
             <VBox alignment="CENTER">
-                <TextField styleClass="input" fx:id="emailInput"/>
+                <TextField styleClass="login_input" fx:id="emailInput"/>
             </VBox>
 
-            <Label styleClass="label" text="Senha"/>
+            <Label styleClass="input_label" text="Senha"/>
 
             <VBox alignment="CENTER">
-                <PasswordField styleClass="input" fx:id="passwordInput" onKeyPressed="#onPasswordEnterPressed"/>
+                <PasswordField styleClass="login_input" fx:id="passwordInput" onKeyPressed="#onPasswordEnterPressed"/>
             </VBox>
 
             <Label fx:id="errorText" styleClass="error_label"/>
 
             <VBox styleClass="login_button_box" alignment="CENTER">
                 <Button styleClass="login_button" text="Log In" onAction="#onLoginButtonClick"/>
-                <Label text="Não possui conta? Registre-se aqui!" styleClass="register_label"
+                <Label text="Não possui conta? Registre-se aqui!" styleClass="goto_register_label"
                        onMouseClicked="#onRegisterLabelClick"/>
             </VBox>
-
-
         </VBox>
 
     </VBox>

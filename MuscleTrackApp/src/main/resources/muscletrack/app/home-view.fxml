@@ -19,14 +19,15 @@
         <rowConstraints>
             <RowConstraints vgrow="ALWAYS" minHeight="50" percentHeight="100.0"/>
         </rowConstraints>
-        <VBox styleClass="planejamento_button_box" alignment="CENTER_LEFT" GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <VBox styleClass="planejamento_button_box" alignment="CENTER_LEFT" GridPane.columnIndex="0"
+              GridPane.rowIndex="0">
             <Button styleClass="planejamento_button" onAction="#planejamentoButtonClick">Planejamento</Button>
         </VBox>
         <VBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="0">
             <Label styleClass="title" text="Muscle Track"/>
         </VBox>
         <VBox styleClass="user_button_box" alignment="CENTER_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="0">
-                <Button styleClass="user_button" onAction="#userButtonClick"> Luiz Gustavo </Button>
+            <Button styleClass="user_button" onAction="#userButtonClick">Luiz Gustavo</Button>
         </VBox>
 
     </GridPane>

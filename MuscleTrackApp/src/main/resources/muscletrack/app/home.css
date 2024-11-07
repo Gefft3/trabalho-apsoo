@@ -1,0 +1,56 @@
+.day_box{
+    -fx-background-color: #283155;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 24;
+}
+
+.day_label{
+    -fx-padding: 10;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+}
+
+.treino_label{
+    -fx-padding: 10 0 10 0;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 20;
+}
+
+.date_label{
+    -fx-padding: 2;
+    -fx-text-fill: #FFFFFF;
+    -fx-opacity: 0.2;
+    -fx-font-size: 20;
+}
+
+.treino_box{
+    -fx-border-color: #FFFFFF;
+    -fx-background-color: #212121;
+}
+
+.planejamento_button_box{
+    -fx-padding: 25;
+    -fx-border-insets: 25;
+    -fx-background-insets: 25;
+}
+
+.planejamento_button{
+    -fx-background-color: #263880;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16;
+    -fx-background-radius: 5;
+}
+
+.user_button_box{
+    -fx-padding: 25;
+    -fx-border-insets: 50;
+    -fx-background-insets: 25;
+}
+
+.user_button{
+    -fx-background-color: #173CD6;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16;
+    -fx-background-radius: 5;
+}

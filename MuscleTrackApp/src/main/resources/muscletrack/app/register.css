@@ -1,0 +1,71 @@
+.redirect_register_pane{
+    -fx-background-color: #0E0D2C;
+    -fx-background-radius: 15;
+}
+
+.register_pane{
+    -fx-background-color: FFFFFF;
+    -fx-background-radius: 15;
+}
+
+.input_register{
+    -fx-background-color: #C0BBBB;
+    -fx-font-size: 20;
+    -fx-background-radius: 5;
+    -fx-min-height: 40;
+    -fx-max-width: 400;
+}
+
+.label_register{
+    -fx-text-fill: #000000;
+    -fx-padding: 25 0 0 100;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+
+.redirect_login_text{
+    -fx-padding:0;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-padding: 20 0 0 0;
+    -fx-text-fill: #FFFFFF;
+}
+
+.intro_text{
+    -fx-padding:0;
+    -fx-font-size: 15;
+    -fx-text-fill: #FFFFFF;
+}
+
+.label_register_intro{
+    -fx-padding:0;
+    -fx-padding: 10 0 20 0;
+    -fx-font-size: 28;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+.register_button{
+    -fx-background-color: #0AC30A;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+}
+
+.register_button:hover{
+    -fx-opacity: 0.8;
+}
+
+.register_button_box{
+    -fx-padding: 0;
+    -fx-border-insets: 25;
+    -fx-background-insets: 25;
+}
+
+.register_label{
+      -fx-padding: 10 0 20 0;
+       -fx-font-size: 32;
+       -fx-text-fill: black;
+       -fx-font-weight: bold;
+}

@@ -1,0 +1,57 @@
+.login_pane{
+    -fx-background-color: #0E0D2C;
+    -fx-padding: 20;
+    -fx-background-radius: 15;
+}
+
+.input_label{
+    -fx-text-fill: #FFFFFF;
+    -fx-padding: 25 0 10 80;
+    -fx-font-size: 20;
+}
+
+.login_label{
+    -fx-padding: 10 0 20 0;
+    -fx-font-size: 28;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+}
+
+.login_input{
+    -fx-background-color: #C0BBBB;
+    -fx-font-size: 20;
+    -fx-background-radius: 5;
+    -fx-min-height: 30;
+    -fx-max-width: 300;
+}
+
+.error_label{
+    -fx-font-size: 16;
+    -fx-text-fill: red;
+    -fx-padding: 25 0 10 80;
+}
+
+.goto_register_label{
+   -fx-padding: 10 0 20 0;
+   -fx-font-size: 14;
+   -fx-text-fill: #FFFFFF;
+   -fx-font-weight: bold;
+}
+
+.login_button{
+    -fx-background-color: #0AC30A;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+}
+
+.login_button:hover{
+    -fx-opacity: 0.8;
+}
+
+.login_button_box{
+    -fx-padding: 25;
+    -fx-border-insets: 25;
+    -fx-background-insets: 25;
+}

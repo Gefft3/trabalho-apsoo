@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Line?>
@@ -19,5 +15,5 @@
         <Line layoutX="50.0" layoutY="50.0" endX="100" stroke="#FFFFFF"/>
         <Label styleClass="treino_label">-</Label>
     </VBox>
-    <Label visible="true">1</Label>
+    <Label visible="false">1</Label>
 </VBox>
