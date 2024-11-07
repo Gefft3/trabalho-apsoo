@@ -69,3 +69,9 @@
        -fx-text-fill: black;
        -fx-font-weight: bold;
 }
+
+.error_label_register{
+    -fx-font-size: 16;
+    -fx-text-fill: red;
+    -fx-padding: 25 0 10 20;
+}

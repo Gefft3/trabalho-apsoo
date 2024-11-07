@@ -9,15 +9,14 @@
 <?import javafx.scene.text.Text?>
 <VBox styleClass="app" alignment="TOP_CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="muscletrack.app.controller.RegisterController"
-      prefHeight="600.0" prefWidth="800.0"
-      minWidth="1200"
+      minHeight="800" minWidth="1200"
 >
 
     <VBox styleClass="title_pane" minHeight="50" alignment="CENTER">
         <Label styleClass="title" text="Muscle Track"/>
     </VBox>
 
-    <GridPane minHeight="800" minWidth="1000" prefWidth="1000" maxWidth="800" alignment="CENTER">
+    <GridPane minHeight="600" minWidth="1000" prefWidth="1000" maxWidth="800" alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="40.0"/>
             <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="60.0"/>
@@ -73,7 +72,7 @@
                 <PasswordField styleClass="input_register" fx:id="confirmPasswordInput"/>
             </VBox>
 
-            <Label fx:id="errorText" styleClass="error_label"/>
+            <Label fx:id="errorText" styleClass="error_label_register"/>
 
             <VBox styleClass="register_button_box" alignment="CENTER">
                 <Button styleClass="register_button" text="Cadastrar" onAction="#onRegisterButtonClick"/>

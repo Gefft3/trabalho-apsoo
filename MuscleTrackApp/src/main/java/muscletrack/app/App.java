@@ -54,7 +54,6 @@ public class App extends Application {
 
     public static void changeToRegister() {
         scene.setRoot(registerPage);
-        App.stage.setWidth(1200);
     }
 
     public static void changeToLogin() {

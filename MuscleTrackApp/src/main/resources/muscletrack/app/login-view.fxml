@@ -4,8 +4,7 @@
 <?import javafx.scene.layout.*?>
 <VBox styleClass="app" alignment="TOP_CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="muscletrack.app.controller.LoginController"
-      prefHeight="400.0" prefWidth="600.0"
-      minHeight="800" minWidth="1000"
+      minHeight="800" minWidth="1200"
 >
     <VBox styleClass="title_pane" minHeight="50" alignment="CENTER">
         <Label styleClass="title" text="Muscle Track"/>

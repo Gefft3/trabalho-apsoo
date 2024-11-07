@@ -28,13 +28,26 @@ public class RegisterController {
         String confirmPass = confirmPasswordInput.getCharacters().toString();
 
         if (email.isBlank() || pass.isBlank() || nome.isBlank() || confirmPass.isBlank()) {
-            errorText.setText("Por favor insira todos os campos");
+            errorText.setText("Por favor insira todos os campos.");
+        }else if(!pass.equals(confirmPass)){
+            errorText.setText("As senhas não são iguais.");
         } else {
             App.user.setUsername(nome);
             App.user.setEmail(email);
             App.user.setPassword(pass);
-            App.fb.registerUser(App.user);
-            App.changeToLogin();
+
+
+            if(!App.fb.registerUser(App.user)){
+                errorText.setText("E-mail ou senha inválidos.");
+                passwordInput.setText("");
+                confirmPasswordInput.setText("");
+            }else{
+                nomeInput.setText("");
+                emailInput.setText("");
+                passwordInput.setText("");
+                confirmPasswordInput.setText("");
+                App.changeToLogin();
+            }
         }
     }
 

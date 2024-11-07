@@ -24,6 +24,8 @@ public class LoginController {
 
     @FXML
     public void onRegisterLabelClick() {
+        passwordInput.setText("");
+        emailInput.setText("");
         App.changeToRegister();
     }
 
@@ -37,16 +39,22 @@ public class LoginController {
         String email = emailInput.getCharacters().toString();
         String pass = passwordInput.getCharacters().toString();
 
+        errorText.setText("");
+
         if (email.isBlank() || pass.isBlank()) {
             errorText.setText("E-mail e/ou senha incorretos");
+            passwordInput.setText("");
         } else {
             App.user.setEmail(email);
             App.user.setPassword(pass);
 
             if (!App.fb.authenticateUser(App.user)) {
                 errorText.setText("E-mail e/ou senha incorretos");
+                passwordInput.setText("");
             } else {
                 System.out.println("Logado com sucesso!!!");
+                passwordInput.setText("");
+                emailInput.setText("");
                 App.changeToHome();
             }
         }
