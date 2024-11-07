@@ -14,15 +14,15 @@ public class Ciclo implements FBRequestBodyConvertible {
     Date inicio;
     List<Treino> treinos;
 
-    public Ciclo(){
+    public Ciclo() {
 
     }
 
-    public void setDuracao(int duracao){
+    public void setDuracao(int duracao) {
         this.duracao = duracao;
     }
 
-    public int getDuracao(){
+    public int getDuracao() {
         return this.duracao;
     }
 
@@ -30,22 +30,22 @@ public class Ciclo implements FBRequestBodyConvertible {
         return treinos;
     }
 
-    public Ciclo(int duracao, Date inicio){
+    public Ciclo(int duracao, Date inicio) {
         this.duracao = duracao;
         this.inicio = inicio;
         this.treinos = new ArrayList<>(duracao);
     }
 
-    void addTreino(Treino t){
+    void addTreino(Treino t) {
         this.treinos.add(t);
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.toJSON().toString();
     }
 
-    public JSONObject toJSON(){
+    public JSONObject toJSON() {
         JSONObject obj = new JSONObject();
 
         obj.put("duracao", this.duracao);
@@ -53,7 +53,7 @@ public class Ciclo implements FBRequestBodyConvertible {
 
         List<JSONObject> treinosJSON = new ArrayList<JSONObject>(this.duracao);
 
-        for(Treino t : this.treinos){
+        for (Treino t : this.treinos) {
             treinosJSON.add(t.toJSON());
         }
 
@@ -62,7 +62,7 @@ public class Ciclo implements FBRequestBodyConvertible {
         return obj;
     }
 
-    public JSONObject toFirebaseRequestBody(){
+    public JSONObject toFirebaseRequestBody() {
 
         FBRequestBodyFactory f = new FBRequestBodyFactory();
 
@@ -71,7 +71,7 @@ public class Ciclo implements FBRequestBodyConvertible {
 
         List<JSONObject> treinosValues = new ArrayList<JSONObject>();
 
-        for(Treino t: this.treinos){
+        for (Treino t : this.treinos) {
             treinosValues.add(t.toFirebaseRequestBody());
         }
 

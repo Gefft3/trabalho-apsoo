@@ -10,16 +10,16 @@ import java.util.TimeZone;
 
 public class FBRequestBodyFactory {
 
-    public FBRequestBodyFactory(){
+    public FBRequestBodyFactory() {
 
     }
 
-    public JSONObject fields(List<String> keys, List<JSONObject> values){
+    public JSONObject fields(List<String> keys, List<JSONObject> values) {
         JSONObject obj = new JSONObject();
 
         JSONObject fields = new JSONObject();
 
-        for(int i = 0; i < keys.size(); i++){
+        for (int i = 0; i < keys.size(); i++) {
             fields.put(keys.get(i), values.get(i));
         }
 
@@ -27,7 +27,7 @@ public class FBRequestBodyFactory {
         return obj;
     }
 
-    public JSONObject arrayValue(List<JSONObject> values){
+    public JSONObject arrayValue(List<JSONObject> values) {
         JSONObject arrayValue = new JSONObject();
 
         JSONObject valuesJSON = new JSONObject();
@@ -38,13 +38,13 @@ public class FBRequestBodyFactory {
         return arrayValue;
     }
 
-    public JSONObject mapValue(JSONObject value){
+    public JSONObject mapValue(JSONObject value) {
         JSONObject obj = new JSONObject();
         obj.put("mapValue", value);
         return obj;
     }
 
-    public JSONObject timestampValue(Date timestamp){
+    public JSONObject timestampValue(Date timestamp) {
         TimeZone tz = TimeZone.getTimeZone("UTC");
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
         df.setTimeZone(tz);
@@ -52,20 +52,20 @@ public class FBRequestBodyFactory {
         return new JSONObject("{timestampValue:'" + isoTimestamp + "'}");
     }
 
-    public JSONObject timestampValue(String timestamp){
+    public JSONObject timestampValue(String timestamp) {
         return new JSONObject("{timestampValue:'" + timestamp + "'}");
     }
 
-    public JSONObject integerValue(int value){
+    public JSONObject integerValue(int value) {
         return new JSONObject("{integerValue:" + value + "}");
     }
 
-    public JSONObject doubleValue(double value){
+    public JSONObject doubleValue(double value) {
         return new JSONObject("{doubleValue:" + value + "}");
     }
 
 
-    public JSONObject stringValue(String  value){
+    public JSONObject stringValue(String value) {
         return new JSONObject("{stringValue:" + value + "}");
     }
 

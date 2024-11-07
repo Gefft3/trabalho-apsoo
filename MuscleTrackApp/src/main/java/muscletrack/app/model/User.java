@@ -23,7 +23,7 @@ public class User {
     private Ciclo ciclo;
     private List<TreinoRealizado> treinosRealizados;
 
-    public User(){
+    public User() {
         this.treinosRealizados = new ArrayList<>();
     }
 
@@ -33,7 +33,7 @@ public class User {
         this.treinosRealizados = new ArrayList<>();
     }
 
-    public User(String username, String email, String password){
+    public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -41,7 +41,7 @@ public class User {
     }
 
     // Talvez tenha alguma forma melhor de fazer isso, mas por enquanto funciona
-    public boolean loadFromJSON(JSONObject data){
+    public boolean loadFromJSON(JSONObject data) {
 
         JSONObject fields = data.getJSONObject("fields");
 
@@ -54,7 +54,7 @@ public class User {
 
         JSONArray treinosRealizadosValues = treinosRealizadosArrayValue.getJSONArray("values");
 
-        for(int i = 0; i < treinosRealizadosValues.length(); i++){
+        for (int i = 0; i < treinosRealizadosValues.length(); i++) {
 
             JSONObject treinoRealizado = (JSONObject) treinosRealizadosValues.get(i);
 
@@ -146,8 +146,7 @@ public class User {
             // Parse the ISO 8601 string and convert to Date
             Date date = df.parse(data_inicioISO);
             this.setCiclo(new Ciclo(duracao, date));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return false;
         }
 
@@ -156,7 +155,7 @@ public class User {
         JSONObject treinosArrayValue = treinos.getJSONObject("arrayValue");
         JSONArray treinosValues = treinosArrayValue.getJSONArray("values");
 
-        for(int i = 0; i < treinosValues.length(); i++) {
+        for (int i = 0; i < treinosValues.length(); i++) {
             JSONObject treino = (JSONObject) treinosValues.get(i);
 
             JSONObject treinoMapValue = treino.getJSONObject("mapValue");
@@ -222,7 +221,7 @@ public class User {
         return true;
     }
 
-    public JSONObject toFirebaseRequestBody(){
+    public JSONObject toFirebaseRequestBody() {
         FBRequestBodyFactory f = new FBRequestBodyFactory();
 
         List<String> keys = new ArrayList<>();
@@ -239,7 +238,7 @@ public class User {
 
         List<JSONObject> treinosRealizadosJSON = new ArrayList<>();
 
-        for(TreinoRealizado t: this.treinosRealizados){
+        for (TreinoRealizado t : this.treinosRealizados) {
             treinosRealizadosJSON.add(t.toFirebaseRequestBody());
         }
 
@@ -250,11 +249,11 @@ public class User {
 
 
     @Override
-    public String toString(){
+    public String toString() {
         return " User: " + this.username + " " + this.email + " " + this.password + " \n" + this.ciclo.toString();
     }
 
-    public TreinoRealizado getTreinoRealizadoByData(String date){
+    public TreinoRealizado getTreinoRealizadoByData(String date) {
         TimeZone tz = TimeZone.getTimeZone("UTC");
         DateFormat d = new SimpleDateFormat("yyyy-MM-dd");
         d.setTimeZone(tz);
@@ -262,7 +261,7 @@ public class User {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
         df.setTimeZone(tz);
 
-        for(TreinoRealizado t: this.treinosRealizados){
+        for (TreinoRealizado t : this.treinosRealizados) {
             String data;
             try {
                 data = d.format(df.parse(t.getDateISO()));
@@ -270,7 +269,7 @@ public class User {
                 throw new RuntimeException(e);
             }
 
-            if(data.equals(date)){
+            if (data.equals(date)) {
                 return t;
             }
         }

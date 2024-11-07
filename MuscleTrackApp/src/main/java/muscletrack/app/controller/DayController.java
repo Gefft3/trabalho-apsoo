@@ -42,10 +42,10 @@ public class DayController {
         t.setTreino(App.user.getCiclo().getTreinos().get(Integer.parseInt(diaDoCiclo.getText()) - 1));
 
         TreinoRealizado tr = App.user.getTreinoRealizadoByData(isoTimestamp);
-        if(tr == null){
+        if (tr == null) {
             App.user.getTreinosRealizados().add(t);
             App.fb.saveUserData(App.user);
-        }else{
+        } else {
             System.out.println("Já há um treino cadastrado para esse dia. Só é possível editá-lo!");
         }
 

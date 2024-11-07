@@ -28,24 +28,24 @@ public class LoginController {
     }
 
     public void onPasswordEnterPressed(KeyEvent keyEvent) {
-        if(Objects.equals(keyEvent.getCode().toString(), "ENTER")){
+        if (Objects.equals(keyEvent.getCode().toString(), "ENTER")) {
             logar();
         }
     }
 
-    private void logar(){
+    private void logar() {
         String email = emailInput.getCharacters().toString();
         String pass = passwordInput.getCharacters().toString();
 
         if (email.isBlank() || pass.isBlank()) {
             errorText.setText("E-mail e/ou senha incorretos");
-        }else{
+        } else {
             App.user.setEmail(email);
             App.user.setPassword(pass);
 
-            if(!App.fb.authenticateUser(App.user)){
+            if (!App.fb.authenticateUser(App.user)) {
                 errorText.setText("E-mail e/ou senha incorretos");
-            }else{
+            } else {
                 System.out.println("Logado com sucesso!!!");
                 App.changeToHome();
             }

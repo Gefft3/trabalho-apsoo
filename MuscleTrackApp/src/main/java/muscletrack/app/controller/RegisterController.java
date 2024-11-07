@@ -37,6 +37,7 @@ public class RegisterController {
             App.changeToLogin();
         }
     }
+
     @FXML
     public void onLoginLabelClick() {
         App.changeToLogin();

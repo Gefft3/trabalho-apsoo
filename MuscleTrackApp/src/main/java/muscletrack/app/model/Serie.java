@@ -18,11 +18,11 @@ public class Serie implements FBRequestBodyConvertible {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.toJSON().toString();
     }
 
-    public JSONObject toJSON(){
+    public JSONObject toJSON() {
         JSONObject obj = new JSONObject();
         obj.put("rep", this.repeticoes);
         obj.put("peso", this.peso);
@@ -30,7 +30,7 @@ public class Serie implements FBRequestBodyConvertible {
         return obj;
     }
 
-    public JSONObject toFirebaseRequestBody(){
+    public JSONObject toFirebaseRequestBody() {
 
         FBRequestBodyFactory f = new FBRequestBodyFactory();
 

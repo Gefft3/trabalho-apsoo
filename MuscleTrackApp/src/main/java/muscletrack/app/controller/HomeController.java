@@ -87,17 +87,17 @@ public class HomeController {
                     diaInicial += 1;
                     if (quantidadeMesAnterior == 0) {
                         String dataAtual;
-                        if(diaInicial < 10) {
-                            dataAtual = ano + "-" + mes + "-0" + String.valueOf(diaInicial-1);
-                        }else{
-                            dataAtual = ano + "-" + mes + "-" + String.valueOf(diaInicial-1);
+                        if (diaInicial < 10) {
+                            dataAtual = ano + "-" + mes + "-0" + String.valueOf(diaInicial - 1);
+                        } else {
+                            dataAtual = ano + "-" + mes + "-" + String.valueOf(diaInicial - 1);
                         }
 
                         VBox treinoBox = (VBox) child.getChildren().get(1);
                         Label treinoRealizado = (Label) treinoBox.getChildren().getLast();
 
                         Treino t = App.user.getTreinoRealizadoByData(dataAtual).getTreino();
-                        if(t != null){
+                        if (t != null) {
                             treinoRealizado.setText(t.getTitulo());
                         }
 
@@ -130,7 +130,7 @@ public class HomeController {
         Ciclo ciclo = u.getCiclo();
 
         for (int i = 0; i < 35; i++) {
-            VBox dia = (VBox) calendar.getChildren().get(i+7);
+            VBox dia = (VBox) calendar.getChildren().get(i + 7);
             VBox treinos = (VBox) dia.getChildren().get(1);
             Label diaCiclo = (Label) dia.getChildren().getLast();
 
@@ -138,11 +138,11 @@ public class HomeController {
 
             Label treinoPlanejado = (Label) treinos.getChildren().getFirst();
 
-            if(ciclo != null){
-                treinoPlanejado.setText(ciclo.getTreinos().get(diaDoCiclo-1).getTitulo());
+            if (ciclo != null) {
+                treinoPlanejado.setText(ciclo.getTreinos().get(diaDoCiclo - 1).getTitulo());
                 diaDoCiclo += 1;
 
-                if (diaDoCiclo > u.getCiclo().getDuracao()){
+                if (diaDoCiclo > u.getCiclo().getDuracao()) {
                     diaDoCiclo = 1;
                 }
             }
