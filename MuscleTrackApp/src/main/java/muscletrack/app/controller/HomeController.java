@@ -93,10 +93,13 @@ public class HomeController {
                         VBox treinoBox = (VBox) child.getChildren().get(1);
                         Label treinoRealizado = (Label) treinoBox.getChildren().getLast();
 
-                        Treino t = App.user.getTreinoRealizadoByData(dataAtual).getTreino();
-                        if (t != null) {
+                        TreinoRealizado tr = App.user.getTreinoRealizadoByData(dataAtual);
+
+                        if (tr != null) {
+                            Treino t = App.user.getTreinoRealizadoByData(dataAtual).getTreino();
                             treinoRealizado.setText(t.getTitulo());
                         }
+
 
                         if (diaInicial - 1 == diaAtual) {
                             lb.setStyle("-fx-opacity: 1;");

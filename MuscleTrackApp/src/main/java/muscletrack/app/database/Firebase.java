@@ -80,6 +80,8 @@ public class Firebase {
             if (responseCode == 200) {
                 JSONObject responseJSON = readResponse(connection.getInputStream());
 
+                System.out.println(responseJSON);
+
                 u.loadFromJSON(responseJSON);
 
                 return true;

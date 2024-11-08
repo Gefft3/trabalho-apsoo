@@ -1,5 +1,6 @@
 package muscletrack.app.model;
 
+import muscletrack.app.database.FBResponseBodyParser;
 import muscletrack.app.utils.DateUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -44,170 +45,143 @@ public class User {
     // Talvez tenha alguma forma melhor de fazer isso, mas por enquanto funciona
     public boolean loadFromJSON(JSONObject data) {
 
-        JSONObject fields = data.getJSONObject("fields");
+        FBResponseBodyParser parser = new FBResponseBodyParser();
 
-        JSONObject userNameJSON = fields.getJSONObject("user_name");
+        JSONObject fields = parser.getFields(data);
 
-        this.username = userNameJSON.getString("stringValue");
+        this.username = parser.getStringValue(parser.getKey("user_name", fields));
 
-        JSONObject treinosRealizados = fields.getJSONObject("treinos_realizados");
-        JSONObject treinosRealizadosArrayValue = treinosRealizados.getJSONObject("arrayValue");
-
-        JSONArray treinosRealizadosValues = treinosRealizadosArrayValue.getJSONArray("values");
-
-        for (int i = 0; i < treinosRealizadosValues.length(); i++) {
-
-            JSONObject treinoRealizado = (JSONObject) treinosRealizadosValues.get(i);
-
-            JSONObject treinoRealizadoMapValue = treinoRealizado.getJSONObject("mapValue");
-
-            JSONObject treinoRealizadoFields = treinoRealizadoMapValue.getJSONObject("fields");
-
-            JSONObject dataJson = treinoRealizadoFields.getJSONObject("data");
-            String dataISO = dataJson.getString("timestampValue");
-
-            TreinoRealizado tr = new TreinoRealizado(dataISO);
-
-            JSONObject treino = treinoRealizadoFields.getJSONObject("treino");
-
-            JSONObject treinoMapValue = treino.getJSONObject("mapValue");
-
-            JSONObject treinoFields = treinoMapValue.getJSONObject("fields");
-
-            JSONObject tituloJSON = treinoFields.getJSONObject("titulo");
-            String titulo = tituloJSON.getString("stringValue");
-
-            JSONObject qntExerciciosJSON = treinoFields.getJSONObject("qnt_exercicios");
-            int qntExercicios = qntExerciciosJSON.getInt("integerValue");
-
-            Treino t = new Treino(titulo, qntExercicios);
-
-            JSONObject exercicios = treinoFields.getJSONObject("exercicios");
-            JSONObject exerciciosArrayValue = exercicios.getJSONObject("arrayValue");
-            JSONArray exerciciosValues = exerciciosArrayValue.getJSONArray("values");
-
-            for (int j = 0; j < exerciciosValues.length(); j++) {
-
-                JSONObject exercicio = (JSONObject) exerciciosValues.get(j);
-
-                JSONObject exercicioMapValue = exercicio.getJSONObject("mapValue");
-
-                JSONObject exercicioFields = exercicioMapValue.getJSONObject("fields");
-
-                JSONObject qntSeriesJSON = exercicioFields.getJSONObject("qnt_series");
-                int qntSeries = qntSeriesJSON.getInt("integerValue");
-
-                JSONObject nomeJSON = exercicioFields.getJSONObject("nome");
-                String nome = nomeJSON.getString("stringValue");
-
-                Exercicio e = new Exercicio(nome, qntSeries);
-
-                JSONObject series = exercicioFields.getJSONObject("series");
-                JSONObject seriesArrayValue = series.getJSONObject("arrayValue");
-                JSONArray seriesValues = seriesArrayValue.getJSONArray("values");
-
-                for (int k = 0; k < seriesValues.length(); k++) {
-                    JSONObject serie = (JSONObject) seriesValues.get(k);
-
-                    JSONObject serieMapValue = serie.getJSONObject("mapValue");
-                    JSONObject serieFields = serieMapValue.getJSONObject("fields");
-
-                    JSONObject pesoJSON = serieFields.getJSONObject("peso");
-                    JSONObject repJSON = serieFields.getJSONObject("rep");
-
-                    int repeticoes = repJSON.getInt("integerValue");
-                    double peso = pesoJSON.getDouble("doubleValue");
-
-                    Serie s = new Serie(peso, repeticoes);
-
-                    e.series.add(s);
-                }
-
-                t.exercicios.add(e);
-
-            }
-
-            tr.setTreino(t);
-            this.treinosRealizados.add(tr);
+        if (this.username == null) {
+            System.out.println("Não tem nome cadastrado ainda.");
         }
 
-        JSONObject ciclo = fields.getJSONObject("ciclo");
-        JSONObject cicloMapValue = ciclo.getJSONObject("mapValue");
+        JSONObject treinosRealizadosJSON = parser.getKey("treinos_realizados", fields);
 
-        JSONObject cicloFields = cicloMapValue.getJSONObject("fields");
+        if (treinosRealizadosJSON == null) {
+            System.out.println("Não tem treinos realizados ainda.");
+        } else {
 
-        int duracao = cicloFields.getJSONObject("duracao").getInt("integerValue");
-        String data_inicioISO = cicloFields.getJSONObject("data_inicio").getString("timestampValue");
+            JSONArray treinosRealizadosValues = parser.getArrayValues(treinosRealizadosJSON);
 
-        DateUtils dt = new DateUtils();
+            for (int i = 0; i < treinosRealizadosValues.length(); i++) {
 
-        this.setCiclo(new Ciclo(duracao, dt.convertIsoToDate(data_inicioISO)));
+                JSONObject treinoRealizado = (JSONObject) treinosRealizadosValues.get(i);
 
-        JSONObject treinos = cicloFields.getJSONObject("treinos");
-        JSONObject treinosArrayValue = treinos.getJSONObject("arrayValue");
-        JSONArray treinosValues = treinosArrayValue.getJSONArray("values");
+                JSONObject treinoRealizadoFields = parser.getMapValue(treinoRealizado);
+                String dataISO = parser.getTimestampValue(parser.getKey("data", treinoRealizadoFields));
 
-        for (int i = 0; i < treinosValues.length(); i++) {
-            JSONObject treino = (JSONObject) treinosValues.get(i);
+                TreinoRealizado tr = new TreinoRealizado(dataISO);
 
-            JSONObject treinoMapValue = treino.getJSONObject("mapValue");
+                JSONObject treinoFields = parser.getMapValue(parser.getKey("treino", treinoRealizadoFields));
 
-            JSONObject treinoFields = treinoMapValue.getJSONObject("fields");
+                String titulo = parser.getStringValue(parser.getKey("titulo", treinoFields));
 
-            JSONObject tituloJSON = treinoFields.getJSONObject("titulo");
-            String titulo = tituloJSON.getString("stringValue");
+                int qntExercicios = parser.getIntegerValue(parser.getKey("qnt_exercicios", treinoFields));
 
-            JSONObject qntExerciciosJSON = treinoFields.getJSONObject("qnt_exercicios");
-            int qntExercicios = qntExerciciosJSON.getInt("integerValue");
+                Treino t = new Treino(titulo, qntExercicios);
 
-            Treino t = new Treino(titulo, qntExercicios);
+                JSONArray exerciciosValues = parser.getArrayValues(parser.getKey("exercicios", treinoFields));
 
-            JSONObject exercicios = treinoFields.getJSONObject("exercicios");
-            JSONObject exerciciosArrayValue = exercicios.getJSONObject("arrayValue");
-            JSONArray exerciciosValues = exerciciosArrayValue.getJSONArray("values");
+                for (int j = 0; j < exerciciosValues.length(); j++) {
 
-            for (int j = 0; j < exerciciosValues.length(); j++) {
+                    JSONObject exercicio = (JSONObject) exerciciosValues.get(j);
 
-                JSONObject exercicio = (JSONObject) exerciciosValues.get(j);
+                    JSONObject exercicioFields = parser.getMapValue(exercicio);
 
-                JSONObject exercicioMapValue = exercicio.getJSONObject("mapValue");
+                    int qntSeries = parser.getIntegerValue(parser.getKey("qnt_series", exercicioFields));
 
-                JSONObject exercicioFields = exercicioMapValue.getJSONObject("fields");
+                    String nome = parser.getStringValue(parser.getKey("nome", exercicioFields));
 
-                JSONObject qntSeriesJSON = exercicioFields.getJSONObject("qnt_series");
-                int qntSeries = qntSeriesJSON.getInt("integerValue");
+                    Exercicio e = new Exercicio(nome, qntSeries);
 
-                JSONObject nomeJSON = exercicioFields.getJSONObject("nome");
-                String nome = nomeJSON.getString("stringValue");
+                    JSONArray seriesValues = parser.getArrayValues(parser.getKey("series", exercicioFields));
 
-                Exercicio e = new Exercicio(nome, qntSeries);
+                    for (int k = 0; k < seriesValues.length(); k++) {
+                        JSONObject serie = (JSONObject) seriesValues.get(k);
 
-                JSONObject series = exercicioFields.getJSONObject("series");
-                JSONObject seriesArrayValue = series.getJSONObject("arrayValue");
-                JSONArray seriesValues = seriesArrayValue.getJSONArray("values");
+                        JSONObject serieFields = parser.getMapValue(serie);
 
-                for (int k = 0; k < seriesValues.length(); k++) {
-                    JSONObject serie = (JSONObject) seriesValues.get(k);
+                        int repeticoes = parser.getIntegerValue(parser.getKey("rep", serieFields));
+                        double peso = parser.getDoubleValue(parser.getKey("peso", serieFields));
 
-                    JSONObject serieMapValue = serie.getJSONObject("mapValue");
-                    JSONObject serieFields = serieMapValue.getJSONObject("fields");
+                        Serie s = new Serie(peso, repeticoes);
 
-                    JSONObject pesoJSON = serieFields.getJSONObject("peso");
-                    JSONObject repJSON = serieFields.getJSONObject("rep");
+                        e.series.add(s);
+                    }
 
-                    int repeticoes = repJSON.getInt("integerValue");
-                    double peso = pesoJSON.getDouble("doubleValue");
+                    t.exercicios.add(e);
 
-                    Serie s = new Serie(peso, repeticoes);
-
-                    e.series.add(s);
                 }
 
-                t.exercicios.add(e);
+                tr.setTreino(t);
+                this.treinosRealizados.add(tr);
+            }
+        }
 
+        JSONObject ciclo = parser.getKey("ciclo", fields);
+
+        if (ciclo == null) {
+            System.out.println("Não tem ciclo cadastrado.");
+        } else {
+
+            JSONObject cicloFields = parser.getMapValue(parser.getKey("ciclo", fields));
+
+            String data_inicioISO = parser.getTimestampValue(parser.getKey("data_inicio", cicloFields));
+            int duracao = parser.getIntegerValue(parser.getKey("duracao", cicloFields));
+
+            DateUtils dt = new DateUtils();
+
+            this.setCiclo(new Ciclo(duracao, dt.convertIsoToDate(data_inicioISO)));
+
+            JSONArray treinosValues = parser.getArrayValues(parser.getKey("treinos", cicloFields));
+
+            for (int i = 0; i < treinosValues.length(); i++) {
+                JSONObject treino = (JSONObject) treinosValues.get(i);
+
+                JSONObject treinoFields = parser.getMapValue(treino);
+
+                String titulo = parser.getStringValue(parser.getKey("titulo", treinoFields));
+
+                int qntExercicios = parser.getIntegerValue(parser.getKey("qnt_exercicios", treinoFields));
+
+                Treino t = new Treino(titulo, qntExercicios);
+
+                JSONArray exerciciosValues = parser.getArrayValues(parser.getKey("exercicios", treinoFields));
+
+                for (int j = 0; j < exerciciosValues.length(); j++) {
+
+                    JSONObject exercicio = (JSONObject) exerciciosValues.get(j);
+
+                    JSONObject exercicioFields = parser.getMapValue(exercicio);
+
+                    int qntSeries = parser.getIntegerValue(parser.getKey("qnt_series", exercicioFields));
+
+                    String nome = parser.getStringValue(parser.getKey("nome", exercicioFields));
+
+                    Exercicio e = new Exercicio(nome, qntSeries);
+
+                    JSONArray seriesValues = parser.getArrayValues(parser.getKey("series", exercicioFields));
+
+                    for (int k = 0; k < seriesValues.length(); k++) {
+                        JSONObject serie = (JSONObject) seriesValues.get(k);
+
+                        JSONObject serieFields = parser.getMapValue(serie);
+
+                        int repeticoes = parser.getIntegerValue(parser.getKey("rep", serieFields));
+                        double peso = parser.getDoubleValue(parser.getKey("peso", serieFields));
+
+                        Serie s = new Serie(peso, repeticoes);
+
+                        e.series.add(s);
+                    }
+
+                    t.exercicios.add(e);
+
+                }
+
+                this.getCiclo().treinos.add(t);
             }
 
-            this.getCiclo().treinos.add(t);
         }
 
         return true;
@@ -218,23 +192,28 @@ public class User {
 
         List<String> keys = new ArrayList<>();
         keys.add("user_name");
-        keys.add("ciclo");
-        keys.add("treinos_realizados");
 
         List<JSONObject> values = new ArrayList<>();
 
         values.add(f.stringValue(this.username));
 
-        JSONObject ciclo = this.ciclo.toFirebaseRequestBody();
-        values.add(f.mapValue(ciclo));
-
-        List<JSONObject> treinosRealizadosJSON = new ArrayList<>();
-
-        for (TreinoRealizado t : this.treinosRealizados) {
-            treinosRealizadosJSON.add(t.toFirebaseRequestBody());
+        if(this.ciclo != null){
+            JSONObject ciclo = this.ciclo.toFirebaseRequestBody();
+            values.add(f.mapValue(ciclo));
+            keys.add("ciclo");
         }
 
-        values.add(f.arrayValue(treinosRealizadosJSON));
+        if(this.treinosRealizados != null && !this.treinosRealizados.isEmpty()) {
+            List<JSONObject> treinosRealizadosJSON = new ArrayList<>();
+
+            keys.add("treinos_realizados");
+
+            for (TreinoRealizado t : this.treinosRealizados) {
+                treinosRealizadosJSON.add(t.toFirebaseRequestBody());
+            }
+
+            values.add(f.arrayValue(treinosRealizadosJSON));
+        }
 
         return f.fields(keys, values);
     }
@@ -257,7 +236,7 @@ public class User {
             }
         }
 
-        return new TreinoRealizado("");
+        return null;
     }
 
     public List<TreinoRealizado> getTreinosRealizados() {
