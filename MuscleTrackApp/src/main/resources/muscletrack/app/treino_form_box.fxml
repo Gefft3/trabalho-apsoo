@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox styleClass="treino_form_box" alignment="TOP_CENTER" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" fx:controller="muscletrack.app.controller.TreinoFormController">
+    <GridPane>
+        <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" minWidth="10" percentWidth="90.0"/>
+            <ColumnConstraints hgrow="NEVER" minWidth="10" percentWidth="10.0"/>
+        </columnConstraints>
+
+        <TextField  GridPane.columnIndex="0"
+                    GridPane.rowIndex="0" styleClass="input_nome_treino"/>
+
+    </GridPane>
+    <GridPane>
+        <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="50.0"/>
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="50.0"/>
+        </columnConstraints>
+
+        <Label  styleClass="label_rep" GridPane.columnIndex="0"  GridPane.rowIndex="0"> Rep </Label>
+        <Label alignment="CENTER" styleClass="label_carga" GridPane.columnIndex="1" GridPane.rowIndex="0"> Carga </Label>
+    </GridPane>
+
+    <ScrollPane GridPane.columnIndex="1"
+                GridPane.rowIndex="1"  fitToWidth="true" fitToHeight="true">
+        <VBox spacing="10" fx:id="seriesBox">
+<!-- REP CARGA INPUTS-->
+
+            <VBox alignment="CENTER">
+                <Label onMouseClicked="#adicionarSerie" styleClass="adicionar"> + </Label>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+</VBox>

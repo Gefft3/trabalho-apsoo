@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.collections.FXCollections?>
+<GridPane fx:controller="muscletrack.app.controller.CadastroDiaController" styleClass="cadastro_dia"
+          xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml">
+
+    <columnConstraints>
+        <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="15.0"/>
+        <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="85.0"/>
+    </columnConstraints>
+
+    <VBox GridPane.columnIndex="0"
+          GridPane.rowIndex="0" maxHeight="250">
+        <Label styleClass="label_dia"> Dia 1 </Label>
+        <Label styleClass="label_titulo"> Titulo </Label>
+        <TextField styleClass="titulo_input"/>
+        <Label styleClass="label_agrupamento"> Agrupamento </Label>
+        <ComboBox fx:id="comboBox" styleClass="agrupamento_combobox" onAction="#comboBoxSelected">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Nenhum"/>
+                    <String fx:value="Peito"/>
+                    <String fx:value="Costas"/>
+                    <String fx:value="Braços"/>
+                    <String fx:value="Pernas"/>
+                </FXCollections>
+            </items>
+            <value>
+                <String fx:value="Nenhum"/>
+            </value>
+        </ComboBox>
+    </VBox>
+
+    <ScrollPane GridPane.columnIndex="1"
+                GridPane.rowIndex="0"  fitToWidth="true"  vbarPolicy="NEVER" fitToHeight="true" maxHeight="250">
+        <HBox fx:id="treinoFormsPane" spacing="15.0" style="-fx-padding: 10;">
+
+<!--             FORM TREINOS   -->
+
+            <VBox alignment="CENTER">
+                <Label onMouseClicked="#adicionarFormTreino" styleClass="adicionar"> + </Label>
+            </VBox>
+        </HBox>
+    </ScrollPane>
+</GridPane>

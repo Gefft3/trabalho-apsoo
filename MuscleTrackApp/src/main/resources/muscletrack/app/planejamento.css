@@ -1,0 +1,153 @@
+.planejamento_form_box{
+    -fx-background-color: #1B1E2A;
+}
+
+.duracao_label{
+    -fx-padding: 10 10 20 0;
+    -fx-font-size: 20;
+    -fx-text-fill: #FFFFFF;
+}
+
+.duracao_input{
+    -fx-background-color: #C0BBBB;
+    -fx-font-size: 16;
+    -fx-background-radius: 5;
+    -fx-min-height: 20;
+    -fx-max-width: 100;
+}
+
+.rounded_button{
+   -fx-padding: 10 0 10 0;
+    -fx-border-insets: 25;
+    -fx-background-insets: 25;
+}
+
+.cadastrar_button{
+    -fx-background-color: #0AC30A;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+}
+
+.cadastrar_button:hover{
+    -fx-opacity: 0.8;
+}
+
+.cancelar_button{
+    -fx-background-color: #C30A0A;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+}
+
+.cancelar_button:hover{
+    -fx-opacity: 0.8;
+}
+
+.form_title{
+    -fx-padding: 10 0 20 0;
+    -fx-font-size: 28;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+}
+
+.label_dia{
+    -fx-padding: 10 10 20 0;
+    -fx-font-size: 20;
+    -fx-text-fill: #FFFFFF;
+}
+
+.label_titulo{
+    -fx-padding: 20 10 10 0;
+    -fx-font-size: 20;
+    -fx-text-fill: #FFFFFF;
+}
+
+.label_agrupamento{
+    -fx-padding: 20 10 10 0;
+    -fx-font-size: 20;
+    -fx-text-fill: #FFFFFF;
+}
+
+.titulo_input{
+    -fx-background-color: #C0BBBB;
+    -fx-font-size: 16;
+    -fx-background-radius: 5;
+    -fx-min-height: 20;
+    -fx-max-width: 200;
+}
+
+.agrupamento_combobox{
+    -fx-background-color: #C0BBBB;
+    -fx-font-size: 16;
+    -fx-background-radius: 5;
+    -fx-min-height: 20;
+    -fx-max-width: 200;
+}
+
+.cadastro_dia{
+    -fx-background-color: #5B6382;
+    -fx-padding: 10;
+    -fx-min-height: 300;
+    -fx-max-height: 300;
+}
+
+.treino_form_box{
+    -fx-background-color: #283155;
+    -fx-min-width: 250;
+    -fx-padding: 5;
+}
+
+.input_nome_treino{
+    -fx-background-color: #C0BBBB;
+    -fx-font-size: 16;
+    -fx-background-radius: 5;
+    -fx-min-height: 30;
+    -fx-pref-height: 30;
+    -fx-max-width: 100;
+}
+
+.rep_carga_input{
+    -fx-background-color: #C0BBBB;
+    -fx-font-size: 14;
+    -fx-background-radius: 5;
+    -fx-min-height: 30;
+    -fx-max-width: 75;
+}
+
+.label_n_series{
+    -fx-padding: 0;
+    -fx-font-size: 16;
+    -fx-text-fill: #FFFFFF;
+}
+
+.label_carga{
+    -fx-padding: 0;
+    -fx-font-size: 16;
+    -fx-text-fill: #FFFFFF;
+}
+
+.label_rep{
+    -fx-padding: 0;
+    -fx-font-size: 16;
+    -fx-text-fill: #FFFFFF;
+}
+
+.remover{
+    -fx-padding: 5;
+    -fx-font-size: 16;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #C30A0A;
+    -fx-background-radius: 15;
+}
+
+
+.adicionar{
+    -fx-padding: 5;
+    -fx-font-size: 16;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #0AC30A;
+    -fx-background-radius: 15;
+}

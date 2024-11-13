@@ -20,6 +20,7 @@ public class App extends Application {
     private static Parent registerPage;
     private static Parent homePage;
     private static Parent userPage;
+    private static Parent planejamentoPage;
     private static Stage stage;
 
 
@@ -33,6 +34,7 @@ public class App extends Application {
         loginPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-view.fxml")));
         registerPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("register-view.fxml")));
         userPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("user-view.fxml")));
+        planejamentoPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("planejamento-view.fxml")));
 
         scene = new Scene(loginPage);
         scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles.css")).toExternalForm());
@@ -40,6 +42,7 @@ public class App extends Application {
         scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("register.css")).toExternalForm());
         scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("home.css")).toExternalForm());
         scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("user.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("planejamento.css")).toExternalForm());
 
         App.stage = stage;
 
@@ -61,7 +64,7 @@ public class App extends Application {
     }
 
     public static void changeToPlanejamento() {
-        System.out.println("GEFFTE TEM QUE FAZER A TELA DE CADASTRO DE PLANEJAMENTO");
+        scene.setRoot(planejamentoPage);
     }
 
     public static void changeToUser() {

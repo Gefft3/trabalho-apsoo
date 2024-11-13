@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox minHeight="30" spacing="30">
+    <HBox alignment="CENTER_LEFT">
+        <TextField styleClass="rep_carga_input"/>
+    </HBox>
+    <HBox alignment="CENTER_LEFT">
+        <TextField styleClass="rep_carga_input"/>
+    </HBox>
+</HBox>

@@ -35,8 +35,5 @@ public class DayController {
                 System.out.println("Já há um treino cadastrado para esse dia. Só é possível editá-lo!");
             }
         }
-
-
-
     }
 }
