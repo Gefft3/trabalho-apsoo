@@ -14,7 +14,56 @@
     -fx-font-weight: bold;
 }
 
-.user_data_label{
-    -fx-font-size: 28;
+.back_button_box{
+    -fx-padding: 25;
+    -fx-border-insets: 25;
+    -fx-background-insets: 25;
+}
+
+.back_button{
+    -fx-background-color: #173CD6;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16;
+    -fx-background-radius: 10;
+}
+
+.logout_button_box{
+    -fx-padding: 25;
+    -fx-border-insets: 50;
+    -fx-background-insets: 25;
+}
+
+.logout_button{
+    -fx-background-color: #C30A0A;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16;
+    -fx-background-radius: 10;
+}
+
+.label_statistic{
+    -fx-font-size: 26;
     -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+    -fx-padding: 20 0 0 0;
+}
+.stat_value{
+    -fx-font-size: 24;
+    -fx-text-fill: #FFFFFF;
+}
+
+.label_user{
+    -fx-font-size: 20;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-padding: 15 0 15 0;
+
+}
+
+
+.user_data_label{
+    -fx-font-size: 32;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+
+
 }

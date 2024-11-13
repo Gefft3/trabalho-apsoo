@@ -1,9 +1,11 @@
 package muscletrack.app.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import muscletrack.app.App;
 
 public class UserController {
 
@@ -29,7 +31,12 @@ public class UserController {
     // Inicializa a interface com valores padrão
     @FXML
     public void initialize() {
-        greetingLabel.setText("Olá, nome do usuário");
+        greetingLabel.setText("Olá, " + App.user.getUsername());
+        nameField.setText(App.user.getUsername());
+        passwordField.setText(App.user.getPassword());
+        emailField.setText(App.user.getEmail());
+
+
         dailyPerformanceLabel.setText("0%");
         cyclePerformanceLabel.setText("0%");
     }
@@ -41,4 +48,8 @@ public class UserController {
         dailyPerformanceLabel.setText(dailyPerformance + "%");
         cyclePerformanceLabel.setText(cyclePerformance + "%");
     }
+
+    public void logout_button_click() {App.changeToLogin();}
+
+    public void back_button_click() {App.changeToHome();}
 }

@@ -65,6 +65,12 @@ public class App extends Application {
     }
 
     public static void changeToUser() {
+        try{
+            userPage = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("user-view.fxml")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         scene.setRoot(userPage);
     }
 

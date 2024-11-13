@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -8,10 +10,28 @@
       prefHeight="400.0" prefWidth="600.0"
       minHeight="800" minWidth="1000">
 
-    <!-- Título -->
-    <VBox styleClass="title_pane" minHeight="50" alignment="CENTER">
-        <Label styleClass="title" text="Muscle Track"/>
-    </VBox>
+    <!-- Título e botoes -->
+    <GridPane styleClass="title_pane" minHeight="60">
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="20.0"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="60.0"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="20.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints vgrow="ALWAYS" minHeight="50" percentHeight="120.0"/>
+        </rowConstraints>
+        <VBox styleClass="back_button_box" alignment="CENTER" GridPane.columnIndex="0"
+              GridPane.rowIndex="0" >
+            <Button maxWidth="100" minHeight="40" styleClass="back_button" onAction="#back_button_click">Voltar</Button>
+        </VBox>
+        <VBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <Label styleClass="title" text="Muscle Track"/>
+        </VBox>
+        <VBox styleClass="logout_button_box" alignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="0" >
+            <Button styleClass="logout_button" maxWidth="100" minHeight="40" onAction="#logout_button_click">Sair</Button>
+        </VBox>
+
+    </GridPane>
 
     <!-- Saudação do Usuário -->
     <VBox minHeight="50" alignment="CENTER_LEFT">
@@ -20,40 +40,63 @@
         </VBox>
     </VBox>
 
-    <VBox alignment="CENTER">
-        <Label text="Seus Dados" styleClass="user_data_label"/>
-    </VBox>
 
     <!-- Seção de Dados do Usuário -->
-    <GridPane alignment="CENTER" hgap="10" vgap="10" maxWidth="600" styleClass="user_data_grid">
-        <!-- Coluna da Esquerda: Nome e Senha -->
-        <Label text="Nome:" styleClass="label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-        <TextField fx:id="nameField" promptText="Nome" styleClass="input" GridPane.rowIndex="0"
-                   GridPane.columnIndex="1"/>
+    <GridPane minHeight="800" minWidth="1000" prefWidth="1000" maxWidth="800" alignment="CENTER">
+    <columnConstraints>
+        <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="50.0"/>
+        <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="50.0"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints vgrow="NEVER" minHeight="20.0" percentHeight="10.0"/>
+        <RowConstraints vgrow="NEVER" minHeight="20.0" percentHeight="40.0"/>
+        <RowConstraints vgrow="NEVER" minHeight="20.0" percentHeight="10.0"/>
+        <RowConstraints vgrow="NEVER" minHeight="20.0" percentHeight="35.0"/>
+    </rowConstraints>
+        <VBox GridPane.rowIndex="0" styleClass="redirect_register_pane" maxWidth="1000" minHeight="100" alignment="CENTER_RIGHT">
+            <Label text="Seus Dados" styleClass="user_data_label"/>
+        </VBox>
 
-        <Label text="Senha:" styleClass="label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-        <PasswordField fx:id="passwordField" promptText="Senha" styleClass="input" GridPane.rowIndex="1"
-                       GridPane.columnIndex="1"/>
 
-        <!-- Coluna da Direita: Email -->
-        <Label text="Email:" styleClass="label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-        <TextField fx:id="emailField" promptText="Email" styleClass="input" GridPane.rowIndex="2"
-                   GridPane.columnIndex="1"/>
-    </GridPane>
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="column_name_pass" alignment="CENTER_LEFT"
+              maxWidth="400" minHeight="400">
+            <Label text="Nome:" styleClass="label_user" />
+            <TextField fx:id="nameField" promptText="Nome" styleClass="input" />
 
+            <Label text="Senha:" styleClass="label_user" />
+            <PasswordField fx:id="passwordField" promptText="Senha" styleClass="input"
+            />
+        </VBox>
+
+    <!-- Coluna da Direita: Email -->
+    <VBox GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="column_email" alignment="CENTER_LEFT"
+              maxWidth="400" minHeight="400">
+
+            <Label text="Email:"  styleClass="label_user" />
+            <TextField fx:id="emailField" promptText="Email" styleClass="input" />
+
+             <Label maxWidth="100" minHeight="90" />
+
+
+
+    </VBox>
+        <VBox  GridPane.rowIndex="2" styleClass="redirect_register_pane" maxWidth="1000" minHeight="100" alignment="CENTER_RIGHT">
+            <Label text="Estatísticas" styleClass="user_data_label"/>
+        </VBox>
     <!-- Seção de Estatísticas -->
-    <VBox alignment="CENTER" spacing="50" styleClass="stats_section">
-        <!-- Desempenho Diário -->
-        <VBox alignment="CENTER">
-            <Label text="Desempenho Diário" styleClass="label"/>
-            <Label fx:id="dailyPerformanceLabel" text="0%" styleClass="stat_value"/>
+    <VBox GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="redirect_register_pane"
+          maxWidth="400" minHeight="200">
+            <Label text="Desempenho Diário" styleClass="label_statistic"/>
+            <Label fx:id="dailyPerformanceLabel" text="0%" styleClass="stat_value" alignment="CENTER"/>
         </VBox>
 
         <!-- Desempenho por Ciclo -->
-        <VBox alignment="CENTER">
-            <Label text="Desempenho por Ciclo" styleClass="label"/>
-            <Label fx:id="cyclePerformanceLabel" text="0%" styleClass="stat_value"/>
-        </VBox>
+        <VBox  GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="redirect_register_pane"
+                    maxWidth="400" minHeight="200">
+            <Label text="Desempenho por Ciclo" styleClass="label_statistic"/>
+            <Label fx:id="cyclePerformanceLabel" text="0%" styleClass="stat_value" alignment="CENTER"/>
+        
     </VBox>
+    </GridPane>
 
 </VBox>
