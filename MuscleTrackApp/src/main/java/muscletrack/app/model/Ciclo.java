@@ -33,6 +33,7 @@ public class Ciclo implements FBRequestBodyConvertible {
     public Ciclo(int duracao, Date inicio) {
         this.duracao = duracao;
         this.inicio = inicio;
+        System.out.println(inicio);
         this.treinos = new ArrayList<>(duracao);
     }
 
@@ -90,4 +91,15 @@ public class Ciclo implements FBRequestBodyConvertible {
         return f.fields(keys, values);
     }
 
+    public Date getInicio() {
+        return inicio;
+    }
+
+    public void setInicio(Date inicio) {
+        this.inicio = inicio;
+    }
+
+    public void setTreinos(List<Treino> treinos) {
+        this.treinos = treinos;
+    }
 }

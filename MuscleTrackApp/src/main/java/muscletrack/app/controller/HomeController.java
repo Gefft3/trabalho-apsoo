@@ -65,7 +65,7 @@ public class HomeController {
             YearMonth mesAtual = YearMonth.of(dt.getYear(), dt.getMonth());
             int diasMesAtual = mesAtual.lengthOfMonth();
 
-            YearMonth mesAnterior = YearMonth.of(dt.getYear(), dt.getMonth());
+            YearMonth mesAnterior = YearMonth.of(dt.getYear(), dt.getMonth() - 1);
             int diasMesAnterior = mesAnterior.lengthOfMonth();
 
             int diaInicial = diaAtual - ((semana - 1) * 7) - diadaSemana;
@@ -85,9 +85,9 @@ public class HomeController {
                     if (quantidadeMesAnterior == 0) {
                         String dataAtual;
                         if (diaInicial < 10) {
-                            dataAtual = ano + "-" + mes + "-0" + String.valueOf(diaInicial - 1);
+                            dataAtual = ano + "-" + mes + "-0" + (diaInicial - 1);
                         } else {
-                            dataAtual = ano + "-" + mes + "-" + String.valueOf(diaInicial - 1);
+                            dataAtual = ano + "-" + mes + "-" + (diaInicial - 1);
                         }
 
                         VBox treinoBox = (VBox) child.getChildren().get(1);
@@ -126,11 +126,73 @@ public class HomeController {
 
     public void updateTreinos(User u) {
 
-        int diaDoCiclo = 1;
         Ciclo ciclo = u.getCiclo();
 
-        for (int i = 0; i < 35; i++) {
+        if(ciclo == null){
+            return;
+        }
+
+        Date dataInicioCiclo = ciclo.getInicio();
+
+        DateUtils dt = new DateUtils();
+        int diaAtual = dt.getToday();
+        int diadaSemana = dt.getWeekDay();
+        int semana = dt.getMonthWeek();
+        int ano = dt.getYear();
+        int mes = dt.getMonth();
+
+        int diaInicial = diaAtual - ((semana - 1) * 7) - diadaSemana;
+        int quantidadeMesAnterior = 0;
+
+        if (diaInicial < 1) {
+            quantidadeMesAnterior = -diaInicial + 1;
+        }
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dataInicioCiclo);
+        int mesInicioCiclo = cal.get(Calendar.MONTH) + 1;
+
+        int inicioFor = 0;
+
+        if (mes == mesInicioCiclo) {
+            inicioFor = quantidadeMesAnterior;
+        }
+
+        for (int i = inicioFor; i < 35; i++) {
             VBox dia = (VBox) calendar.getChildren().get(i + 7);
+            Label diaNoCalendario = (Label) dia.getChildren().getFirst();
+
+            int diaCalendario = Integer.parseInt(diaNoCalendario.getText());
+
+            if(inicioFor == 0 && quantidadeMesAnterior != 0){
+                mes = dt.getMonth()-1;
+                quantidadeMesAnterior -= 1;
+            }else if(quantidadeMesAnterior == 0){
+                mes = dt.getMonth();
+            }
+            String dataCalendarioYMD;
+            if (diaCalendario < 10) {
+                dataCalendarioYMD = ano + "-" + mes + "-0" + (diaCalendario + 1);
+            } else {
+                dataCalendarioYMD = ano + "-" + mes + "-" + (diaCalendario + 1);
+            }
+
+
+            Date dataCalendario = dt.convertYmdToDate(dataCalendarioYMD);
+
+            long diferenca = 0;
+            try {
+                diferenca = dt.betweenDates(dataInicioCiclo, dataCalendario);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            long diaDoCiclo = diferenca % ciclo.getDuracao();
+
+            if(diferenca < 0){
+                continue;
+            }
+
             VBox treinos = (VBox) dia.getChildren().get(1);
             Label diaCiclo = (Label) dia.getChildren().getLast();
 
@@ -138,16 +200,7 @@ public class HomeController {
 
             Label treinoPlanejado = (Label) treinos.getChildren().getFirst();
 
-            if (ciclo != null) {
-                treinoPlanejado.setText(ciclo.getTreinos().get(diaDoCiclo - 1).getTitulo());
-                diaDoCiclo += 1;
-
-                if (diaDoCiclo > u.getCiclo().getDuracao()) {
-                    diaDoCiclo = 1;
-                }
-            }
-
-
+            treinoPlanejado.setText(ciclo.getTreinos().get((int) (diaDoCiclo)).getTitulo());
         }
     }
 

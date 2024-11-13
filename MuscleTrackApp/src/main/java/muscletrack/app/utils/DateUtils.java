@@ -1,8 +1,10 @@
 package muscletrack.app.utils;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
@@ -43,10 +45,23 @@ public class DateUtils {
     }
 
     public Date convertIsoToDate(String data){
+        int index = data.indexOf(".");
+        if (index > -1) {
+            data = data.substring(0, index) + "Z";
+        }
         try {
             return ISO.parse(data);
         } catch (Exception e) {
             return null;
+        }
+    }
+
+    public Date convertYmdToDate(String date){
+        try {
+            return ymd.parse(date);
+        } catch (ParseException e) {
+            System.out.println("Could not convert from yyyy-MM-dd to DATE");
+            throw new RuntimeException(e);
         }
     }
 
@@ -68,5 +83,10 @@ public class DateUtils {
 
     public int getMonthWeek(){
         return cal.get(Calendar.WEEK_OF_MONTH);
+    }
+
+    public long betweenDates(Date firstDate, Date secondDate) throws IOException
+    {
+        return ChronoUnit.DAYS.between(firstDate.toInstant(), secondDate.toInstant());
     }
 }
