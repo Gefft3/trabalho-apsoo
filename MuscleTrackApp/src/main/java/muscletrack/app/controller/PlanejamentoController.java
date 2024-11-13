@@ -49,5 +49,11 @@ public class PlanejamentoController {
     }
 
     public void removerDia(MouseEvent mouseEvent) {
+
+        ObservableList<Node> children = planejamentoFormBox.getChildren();
+
+        if(children.size() > 2){
+            planejamentoFormBox.getChildren().remove(planejamentoFormBox.getChildren().size() - 2);
+        }
     }
 }
