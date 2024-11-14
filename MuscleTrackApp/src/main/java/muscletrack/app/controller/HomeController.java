@@ -20,9 +20,9 @@ public class HomeController {
 
     @FXML
     private void initialize() {
-
-        App.fb.loadUserData(App.user);
-
+        if(!App.user.getIsLoaded()) {
+            App.fb.loadUserData(App.user);
+        }
 //        Ciclo c = new Ciclo(7, new Date());
 //        Treino t1= new Treino("peito", 1);
 //        Treino t7= new Treino("peito1", 1);

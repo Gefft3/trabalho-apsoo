@@ -23,6 +23,7 @@ public class User {
     private String idToken;
     private String refreshToken;
     private Ciclo ciclo;
+    private boolean isLoaded;
     private List<TreinoRealizado> treinosRealizados;
 
     public User() {
@@ -184,6 +185,7 @@ public class User {
 
         }
 
+        this.isLoaded = true;
         return true;
     }
 
@@ -301,5 +303,9 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public boolean getIsLoaded(){
+        return this.isLoaded;
     }
 }

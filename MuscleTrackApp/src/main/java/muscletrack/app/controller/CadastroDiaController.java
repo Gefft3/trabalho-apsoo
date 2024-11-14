@@ -29,18 +29,6 @@ public class CadastroDiaController {
     public void adicionarFormTreino() {
         try {
             VBox treinoForm = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("treino_form_box.fxml")));
-            GridPane g = (GridPane) treinoForm.getChildren().getFirst();
-
-            VBox v = new VBox();
-            Label x = new Label("X");
-            x.getStyleClass().setAll("remover");
-            x.setOnMouseClicked(this::removerTreino);
-
-            v.getChildren().add(x);
-
-            GridPane.setColumnIndex(v, 1);
-
-            g.getChildren().add(v);
 
             ObservableList<Node> children = treinoFormsPane.getChildren();
 
@@ -49,15 +37,5 @@ public class CadastroDiaController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private void removerTreino(MouseEvent mouseEvent) {
-        VBox treinoFormToRemove = (VBox) ((Label) mouseEvent.getSource()).getParent().getParent().getParent();
-
-        int index = treinoFormsPane.getChildren().indexOf(treinoFormToRemove);
-
-        System.out.println(index);
-
-        treinoFormsPane.getChildren().remove(index);
     }
 }

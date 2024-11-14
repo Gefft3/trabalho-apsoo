@@ -20,8 +20,16 @@ public class Exercicio implements FBRequestBodyConvertible {
         this.series = new ArrayList<Serie>(qntSeries);
     }
 
+    public Exercicio(){
+
+    }
+
     public void addSerie(Serie s) {
+        if(this.series == null){
+            this.series = new ArrayList<>();
+        }
         this.series.add(s);
+
     }
 
     @Override
@@ -72,5 +80,29 @@ public class Exercicio implements FBRequestBodyConvertible {
         JSONObject fields = f.fields(keys, values);
 
         return f.mapValue(fields);
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getQntSeries() {
+        return qntSeries;
+    }
+
+    public void setQntSeries(int qntSeries) {
+        this.qntSeries = qntSeries;
+    }
+
+    public List<Serie> getSeries() {
+        return series;
+    }
+
+    public void setSeries(List<Serie> series) {
+        this.series = series;
     }
 }

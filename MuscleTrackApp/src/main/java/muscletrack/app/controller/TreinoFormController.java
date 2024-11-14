@@ -22,15 +22,6 @@ public class TreinoFormController {
         try {
             HBox repCargaInputs = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("rep_carga_inputs.fxml")));
 
-            VBox v = new VBox();
-            Label x = new Label("X");
-            x.getStyleClass().setAll("remover");
-            x.setOnMouseClicked(this::removerSerie);
-
-            v.getChildren().add(x);
-
-            repCargaInputs.getChildren().add(v);
-
             ObservableList<Node> children = seriesBox.getChildren();
 
             children.add(children.size() - 1, repCargaInputs);
@@ -40,13 +31,10 @@ public class TreinoFormController {
         }
     }
 
-    public void removerSerie(MouseEvent mouseEvent) {
-        HBox repCargaInputToRemove = (HBox) ((Label) mouseEvent.getSource()).getParent().getParent();
+    public void removerTreinoForm(MouseEvent mouseEvent) {
+        VBox itself = (VBox) ((Label) mouseEvent.getSource()).getParent().getParent().getParent();
+        HBox parent = (HBox) itself.getParent();
 
-        int index = seriesBox.getChildren().indexOf(repCargaInputToRemove);
-
-        System.out.println(index);
-
-        seriesBox.getChildren().remove(index);
+        parent.getChildren().remove(itself);
     }
 }

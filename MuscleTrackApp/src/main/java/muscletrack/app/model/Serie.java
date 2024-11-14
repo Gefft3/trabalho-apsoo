@@ -12,6 +12,9 @@ public class Serie implements FBRequestBodyConvertible {
     int repeticoes;
     double peso;
 
+    public Serie(){}
+
+
     public Serie(double peso, int repeticoes) {
         this.peso = peso;
         this.repeticoes = repeticoes;

@@ -34,7 +34,6 @@ public class App extends Application {
         loginPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-view.fxml")));
         registerPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("register-view.fxml")));
         userPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("user-view.fxml")));
-        planejamentoPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("planejamento-view.fxml")));
 
         scene = new Scene(loginPage);
         scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles.css")).toExternalForm());
@@ -64,6 +63,12 @@ public class App extends Application {
     }
 
     public static void changeToPlanejamento() {
+
+        try{
+            planejamentoPage = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("planejamento-view.fxml")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         scene.setRoot(planejamentoPage);
     }
 

@@ -3,11 +3,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox minHeight="30" spacing="30">
+<HBox minHeight="30" spacing="30" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="muscletrack.app.controller.RepCargaController">
     <HBox alignment="CENTER_LEFT">
-        <TextField styleClass="rep_carga_input"/>
+        <TextField styleClass="rep_carga_input" promptText="Reps"/>
     </HBox>
     <HBox alignment="CENTER_LEFT">
-        <TextField styleClass="rep_carga_input"/>
+        <TextField styleClass="rep_carga_input" promptText="Carga"/>
     </HBox>
+    <VBox alignment="CENTER">
+        <Label onMouseClicked="#removerRepCarga" styleClass="remover"> X </Label>
+    </VBox>
 </HBox>

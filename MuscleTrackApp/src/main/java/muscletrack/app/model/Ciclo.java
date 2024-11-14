@@ -27,6 +27,9 @@ public class Ciclo implements FBRequestBodyConvertible {
     }
 
     public List<Treino> getTreinos() {
+        if(treinos == null){
+            this.treinos = new ArrayList<>();
+        }
         return treinos;
     }
 
@@ -38,6 +41,9 @@ public class Ciclo implements FBRequestBodyConvertible {
     }
 
     void addTreino(Treino t) {
+        if(this.treinos == null){
+            this.treinos = new ArrayList<>();
+        }
         this.treinos.add(t);
     }
 

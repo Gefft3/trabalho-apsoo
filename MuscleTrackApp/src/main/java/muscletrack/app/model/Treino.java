@@ -14,6 +14,10 @@ public class Treino implements FBRequestBodyConvertible {
     int qntExercicios;
     List<Exercicio> exercicios;
 
+    public Treino(){
+
+    }
+
     public Treino(String titulo, int qntExercicios) {
         this.titulo = titulo;
         this.qntExercicios = qntExercicios;
@@ -21,6 +25,9 @@ public class Treino implements FBRequestBodyConvertible {
     }
 
     public void addExercicio(Exercicio e) {
+        if(this.exercicios == null){
+            this.exercicios = new ArrayList<>();
+        }
         this.exercicios.add(e);
     }
 
