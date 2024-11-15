@@ -12,9 +12,10 @@
         </columnConstraints>
 
         <TextField  GridPane.columnIndex="0"
-                    GridPane.rowIndex="0" styleClass="input_nome_treino"/>
+                    GridPane.rowIndex="0" styleClass="input_nome_treino" promptText="TESTE"/>
 
-        <VBox alignment="CENTER_RIGHT">
+        <VBox GridPane.columnIndex="1"
+              GridPane.rowIndex="0" alignment="CENTER_RIGHT">
             <Label onMouseClicked="#removerTreinoForm" styleClass="remover"> X </Label>
         </VBox>
 

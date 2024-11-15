@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class TreinoForm {
-    private VBox treinoFormBox;
+    private final VBox treinoFormBox;
 
     public TreinoForm(){
         try {
