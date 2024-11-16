@@ -1,8 +1,6 @@
 package muscletrack.app.components;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -11,7 +9,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import muscletrack.app.App;
-import muscletrack.app.model.Treino;
 
 import java.io.IOException;
 import java.util.Objects;
