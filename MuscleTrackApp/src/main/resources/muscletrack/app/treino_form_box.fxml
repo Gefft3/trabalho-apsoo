@@ -12,7 +12,7 @@
         </columnConstraints>
 
         <TextField  GridPane.columnIndex="0"
-                    GridPane.rowIndex="0" styleClass="input_nome_treino" promptText="TESTE"/>
+                    GridPane.rowIndex="0" styleClass="input_nome_treino" promptText="Nome"/>
 
         <VBox GridPane.columnIndex="1"
               GridPane.rowIndex="0" alignment="CENTER_RIGHT">

@@ -12,6 +12,7 @@ public class Treino implements FBRequestBodyConvertible {
 
     String titulo;
     int qntExercicios;
+    String agrupamento;
     List<Exercicio> exercicios;
 
     public Treino(){
@@ -62,8 +63,10 @@ public class Treino implements FBRequestBodyConvertible {
 
         List<JSONObject> exerciciosValues = new ArrayList<JSONObject>();
 
-        for (Exercicio s : this.exercicios) {
-            exerciciosValues.add(s.toFirebaseRequestBody());
+        if(this.exercicios != null){
+            for (Exercicio s : this.exercicios) {
+                exerciciosValues.add(s.toFirebaseRequestBody());
+            }
         }
 
         JSONObject exercicios = f.arrayValue(exerciciosValues);
@@ -71,10 +74,12 @@ public class Treino implements FBRequestBodyConvertible {
         keys.add("exercicios");
         keys.add("titulo");
         keys.add("qnt_exercicios");
+        keys.add("agrupamento");
 
         values.add(exercicios);
         values.add(f.stringValue(this.titulo));
         values.add(f.integerValue(this.qntExercicios));
+        values.add(f.stringValue(this.agrupamento));
 
 
         JSONObject fields = f.fields(keys, values);
@@ -104,5 +109,13 @@ public class Treino implements FBRequestBodyConvertible {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    public String getAgrupamento() {
+        return agrupamento;
+    }
+
+    public void setAgrupamento(String agrupamento) {
+        this.agrupamento = agrupamento;
     }
 }

@@ -49,6 +49,7 @@ public class PlanejamentoController {
                     CadastroDia cd = new CadastroDia();
                     cd.setDia(dia);
                     cd.setTitulo(t.getTitulo());
+                    cd.setAgrupamento(t.getAgrupamento());
                     List<Exercicio> exercicios = t.getExercicios();
 
                     if(exercicios != null){
@@ -107,7 +108,7 @@ public class PlanejamentoController {
                 TextField tituloField = (TextField) ((VBox)cadastroDia.getChildren().getFirst()).getChildren().get(2);
 
                 String agrupamento = (String) agrupamentoSelect.getValue();
-                System.out.println(agrupamento);
+                t.setAgrupamento(agrupamento);
                 t.setTitulo(tituloField.getText());
 
                 ScrollPane sp = (ScrollPane) cadastroDia.getChildren().getLast();

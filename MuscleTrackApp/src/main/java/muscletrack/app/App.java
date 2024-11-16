@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import muscletrack.app.database.Firebase;
+import muscletrack.app.model.TreinoRealizado;
 import muscletrack.app.model.User;
 import java.io.IOException;
 import java.util.Objects;
@@ -15,13 +16,19 @@ public class App extends Application {
 
     public static User user;
     public static Firebase fb;
+    public static TreinoRealizado treinoRealizadoAtual;
+    public static int treinoRealizadoIndex = -1;
+    public static String treinoRealizadoTimestamp;
     private static Scene scene;
     private static Parent loginPage;
     private static Parent registerPage;
     private static Parent homePage;
     private static Parent userPage;
     private static Parent planejamentoPage;
+    private static Parent cadastroTreinoRealizadoPage;
     private static Stage stage;
+
+
 
 
     @Override
@@ -90,7 +97,15 @@ public class App extends Application {
         }
         scene.setRoot(homePage);
         App.stage.setMaximized(true);
+    }
 
+    public static void changeToCadastroTreinoRealizado() {
+        try{
+            cadastroTreinoRealizadoPage = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("registrar-treino-view.fxml")));
+        }catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        scene.setRoot(cadastroTreinoRealizadoPage);
     }
 
 }

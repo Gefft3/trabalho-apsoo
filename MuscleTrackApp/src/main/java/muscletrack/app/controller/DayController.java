@@ -8,6 +8,8 @@ import muscletrack.app.model.Ciclo;
 import muscletrack.app.model.TreinoRealizado;
 import muscletrack.app.utils.DateUtils;
 
+import java.io.IOException;
+
 public class DayController {
     public void diaClicado(MouseEvent mouseEvent) {
         VBox box = (VBox) mouseEvent.getSource();
@@ -26,13 +28,24 @@ public class DayController {
         Ciclo c = App.user.getCiclo();
 
         if (c != null) {
-            t.setTreino(c.getTreinos().get(Integer.parseInt(diaDoCiclo.getText()) - 1));
+            try {
+                if(dt.betweenDates(dt.convertYmdToDate(isoTimestamp), c.getInicio()) <= 1){
+                    t.setTreino(c.getTreinos().get(Integer.parseInt(diaDoCiclo.getText())));
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             TreinoRealizado tr = App.user.getTreinoRealizadoByData(isoTimestamp);
             if (tr == null) {
-                App.user.getTreinosRealizados().add(t);
-                App.fb.saveUserData(App.user);
+                App.treinoRealizadoAtual = t;
+                App.treinoRealizadoIndex = -1;
+                App.treinoRealizadoTimestamp = isoTimestamp;
+                App.changeToCadastroTreinoRealizado();
             } else {
-                System.out.println("Já há um treino cadastrado para esse dia. Só é possível editá-lo!");
+                App.treinoRealizadoAtual = tr;
+                App.treinoRealizadoIndex = App.user.getTreinosRealizados().indexOf(tr);
+                App.treinoRealizadoTimestamp = isoTimestamp;
+                App.changeToCadastroTreinoRealizado();
             }
         }
     }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox styleClass="app" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="muscletrack.app.controller.TreinoRealizadoController"
+      prefHeight="400.0" prefWidth="600.0"
+      minHeight="Infinity" minWidth="1000"
+      alignment="TOP_CENTER"
+      style="-fx-background-color: #0E0D2C;"
+>
+
+    <VBox styleClass="title_pane" minHeight="50" alignment="CENTER">
+        <Label styleClass="title" text="Muscle Track"/>
+    </VBox>
+
+    <GridPane>
+        <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="5.0"/>
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="90.0"/>
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="5.0"/>
+        </columnConstraints>
+
+        <VBox GridPane.columnIndex="1"
+              GridPane.rowIndex="0" alignment="CENTER">
+            <Label  styleClass="form_title"> Registrar Treino </Label>
+        </VBox>
+
+        <VBox GridPane.columnIndex="1"
+              GridPane.rowIndex="1" spacing="10" fx:id="treinoRealizadoBox" styleClass="planejamento_form_box">
+
+            <GridPane styleClass="planejamento_form_header">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="50.0"/>
+                    <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="50.0"/>
+                </columnConstraints>
+                <VBox GridPane.columnIndex="0"
+                      GridPane.rowIndex="0" styleClass="rounded_button" alignment="CENTER_LEFT">
+                    <Button styleClass="cancelar_button" text="Cancelar" onAction="#onCancelarButtonClick"/>
+                </VBox>
+
+                <VBox GridPane.columnIndex="1"
+                      GridPane.rowIndex="0" styleClass="rounded_button" alignment="CENTER_RIGHT">
+                    <Button styleClass="cadastrar_button" text="Cadastrar" onAction="#registrarTreinoRealizado"/>
+                </VBox>
+            </GridPane>
+
+<!--        Adicionar cadastro de treino realizado        -->
+
+        </VBox>
+
+    </GridPane>
+</VBox>

@@ -3,6 +3,7 @@ package muscletrack.app.components;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -40,11 +41,19 @@ public class CadastroDia {
         ((Label)((VBox)cadastroDiaPane.getChildren().getFirst()).getChildren().getFirst()).setText("Dia " + String.valueOf(dia));
     }
 
+    public void setDia(String dia){
+        ((Label)((VBox)cadastroDiaPane.getChildren().getFirst()).getChildren().getFirst()).setText(dia);
+    }
+
     public void setTitulo(String titulo){
         ((TextField)((VBox)cadastroDiaPane.getChildren().getFirst()).getChildren().get(2)).setText(titulo);
     }
 
     public GridPane getCadastroDiaPane(){
         return this.cadastroDiaPane;
+    }
+
+    public void setAgrupamento(String agrupamento){
+        ((ComboBox)((VBox)cadastroDiaPane.getChildren().getFirst()).getChildren().get(4)).setValue(agrupamento);
     }
 }
