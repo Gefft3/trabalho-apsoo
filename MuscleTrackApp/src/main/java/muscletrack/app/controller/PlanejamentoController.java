@@ -21,6 +21,7 @@ import muscletrack.app.model.Ciclo;
 import muscletrack.app.model.Exercicio;
 import muscletrack.app.model.Serie;
 import muscletrack.app.model.Treino;
+import muscletrack.app.utils.DateUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -157,7 +158,19 @@ public class PlanejamentoController {
                 c.getTreinos().add(t);
             }
 
+            App.user.setCiclo(c);
+
+            c.getInicio().setHours(20);
+            c.getInicio().setMinutes(0);
+            c.getInicio().setSeconds(0);
+
             System.out.println(c);
+
+            if(!App.fb.saveUserData(App.user)){
+                System.out.println("Erro ao salvar alterações");
+            }else{
+                App.changeToHome();
+            }
 
         }
     }
