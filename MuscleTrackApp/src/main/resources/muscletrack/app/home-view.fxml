@@ -26,7 +26,7 @@
             <Label styleClass="title" text="Muscle Track"/>
         </VBox>
         <VBox styleClass="user_button_box" alignment="CENTER_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="0">
-            <Button styleClass="user_button" onAction="#userButtonClick">Luiz Gustavo</Button>
+            <Button styleClass="user_button" onAction="#userButtonClick"></Button>
         </VBox>
 
     </GridPane>

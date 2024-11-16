@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import muscletrack.app.App;
+import muscletrack.app.model.User;
 
 public class UserController {
 
@@ -41,15 +42,24 @@ public class UserController {
         cyclePerformanceLabel.setText("0%");
     }
 
-    // Método para atualizar as informações do usuário
-    public void updateUserInformation(String name, String email, int dailyPerformance, int cyclePerformance) {
-        nameField.setText(name);
-        emailField.setText(email);
-        dailyPerformanceLabel.setText(dailyPerformance + "%");
-        cyclePerformanceLabel.setText(cyclePerformance + "%");
+    public void logout_button_click() {
+        App.user = new User();
+        App.changeToLogin();
     }
 
-    public void logout_button_click() {App.changeToLogin();}
+
 
     public void back_button_click() {App.changeToHome();}
+
+    public void save_button_click() {
+        App.user.setEmail(emailField.getText());
+        App.user.setPassword(passwordField.getText());
+        App.user.setUsername((nameField.getText()));
+
+        App.fb.changeUserEmail(App.user);
+        App.fb.changeUserPassword(App.user);
+        App.fb.saveUserData(App.user);
+
+
+    }
 }

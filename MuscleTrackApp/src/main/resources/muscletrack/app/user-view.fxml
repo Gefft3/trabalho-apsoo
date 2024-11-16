@@ -50,8 +50,9 @@
     <rowConstraints>
         <RowConstraints vgrow="NEVER" minHeight="20.0" percentHeight="10.0"/>
         <RowConstraints vgrow="NEVER" minHeight="20.0" percentHeight="40.0"/>
+        <RowConstraints vgrow="NEVER" minHeight="10.0" percentHeight="10.0"/>
         <RowConstraints vgrow="NEVER" minHeight="20.0" percentHeight="10.0"/>
-        <RowConstraints vgrow="NEVER" minHeight="20.0" percentHeight="35.0"/>
+        <RowConstraints vgrow="NEVER" minHeight="20.0" percentHeight="30.0"/>
     </rowConstraints>
         <VBox GridPane.rowIndex="0" styleClass="redirect_register_pane" maxWidth="1000" minHeight="100" alignment="CENTER_RIGHT">
             <Label text="Seus Dados" styleClass="user_data_label"/>
@@ -77,21 +78,23 @@
 
              <Label maxWidth="100" minHeight="90" />
 
-
-
     </VBox>
-        <VBox  GridPane.rowIndex="2" styleClass="redirect_register_pane" maxWidth="1000" minHeight="100" alignment="CENTER_RIGHT">
+        <VBox GridPane.rowIndex="2" styleClass="save_button_box" alignment="CENTER_RIGHT" maxWidth="1000" minHeight="60" >
+            <Button styleClass="save_button" maxWidth="100" minHeight="40" onAction="#save_button_click">Salvar</Button>
+
+        </VBox>
+        <VBox  GridPane.rowIndex="3" styleClass="redirect_register_pane" maxWidth="1000" minHeight="100" alignment="CENTER_RIGHT">
             <Label text="Estatísticas" styleClass="user_data_label"/>
         </VBox>
     <!-- Seção de Estatísticas -->
-    <VBox GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="redirect_register_pane"
+    <VBox GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="redirect_register_pane"
           maxWidth="400" minHeight="200">
             <Label text="Desempenho Diário" styleClass="label_statistic"/>
             <Label fx:id="dailyPerformanceLabel" text="0%" styleClass="stat_value" alignment="CENTER"/>
         </VBox>
 
         <!-- Desempenho por Ciclo -->
-        <VBox  GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="redirect_register_pane"
+        <VBox  GridPane.columnIndex="1" GridPane.rowIndex="4" styleClass="redirect_register_pane"
                     maxWidth="400" minHeight="200">
             <Label text="Desempenho por Ciclo" styleClass="label_statistic"/>
             <Label fx:id="cyclePerformanceLabel" text="0%" styleClass="stat_value" alignment="CENTER"/>

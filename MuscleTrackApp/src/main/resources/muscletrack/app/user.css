@@ -67,3 +67,20 @@
 
 
 }
+.save_button{
+    -fx-background-color: #0e0d2c;
+    -fx-border-color: white;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-radius: 10;
+    -fx-padding: 10;
+    -fx-font-weight: bold;
+}
+
+.save_button:hover{
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #0e0d2c;
+    -fx-font-weight: bold;
+    -fx-border-radius: 10;
+    -fx-padding: 10;
+
+}
