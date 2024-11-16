@@ -220,6 +220,88 @@ public class Firebase {
         }
     }
 
+    public boolean changeUserEmail(User u){
+        try {
+
+            URI finalURI = new URI(this.authURL + "update?key=" + this.apiKey);
+
+            HttpURLConnection connection = (HttpURLConnection) finalURI.toURL().openConnection();
+
+            connection.setDoOutput(true);
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+
+            JSONObject reqBody = new JSONObject();
+
+            reqBody.put("email", u.getEmail());
+            reqBody.put("returnSecureToken", true);
+
+            OutputStream os = connection.getOutputStream();
+
+            os.write(reqBody.toString().getBytes(StandardCharsets.UTF_8));
+            os.close();
+
+            int responseCode = connection.getResponseCode();
+
+            if (responseCode == 200) {
+
+                JSONObject responseJSON = readResponse(connection.getInputStream());
+
+                u.setIdToken(responseJSON.getString("idToken"));
+                u.setLocalID(responseJSON.getString("localId"));
+                u.setRefreshToken(responseJSON.getString("refreshToken"));
+
+                System.out.println(u.getLocalID());
+                System.out.println("Atualizou o email com sucesso");
+                return true;
+            }
+            return false;
+        } catch (IOException | URISyntaxException e) {
+            return false;
+        }
+    }
+
+    public boolean changeUserPassword(User u){
+        try {
+
+            URI finalURI = new URI(this.authURL + "update?key=" + this.apiKey);
+
+            HttpURLConnection connection = (HttpURLConnection) finalURI.toURL().openConnection();
+
+            connection.setDoOutput(true);
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+
+            JSONObject reqBody = new JSONObject();
+
+            reqBody.put("password", u.getPassword());
+            reqBody.put("returnSecureToken", true);
+
+            OutputStream os = connection.getOutputStream();
+
+            os.write(reqBody.toString().getBytes(StandardCharsets.UTF_8));
+            os.close();
+
+            int responseCode = connection.getResponseCode();
+
+            if (responseCode == 200) {
+
+                JSONObject responseJSON = readResponse(connection.getInputStream());
+
+                u.setIdToken(responseJSON.getString("idToken"));
+                u.setLocalID(responseJSON.getString("localId"));
+                u.setRefreshToken(responseJSON.getString("refreshToken"));
+
+                System.out.println(u.getLocalID());
+                System.out.println("Atualizou a senha com sucesso");
+                return true;
+            }
+            return false;
+        } catch (IOException | URISyntaxException e) {
+            return false;
+        }
+    }
+
     private JSONObject readResponse(InputStream inputStream) {
         BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
         StringBuilder res = new StringBuilder();
