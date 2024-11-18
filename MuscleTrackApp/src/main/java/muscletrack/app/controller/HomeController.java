@@ -3,6 +3,7 @@ package muscletrack.app.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -17,42 +18,15 @@ import java.util.*;
 public class HomeController {
     @FXML
     public GridPane calendar;
+    public Button userButton;
 
     @FXML
     private void initialize() {
         if(!App.user.getIsLoaded()) {
             App.fb.loadUserData(App.user);
         }
-//        Ciclo c = new Ciclo(7, new Date());
-//        Treino t1= new Treino("peito", 1);
-//        Treino t7= new Treino("peito1", 1);
-//        Treino t2= new Treino("peito2", 1);
-//        Treino t3= new Treino("peito3", 1);j
-//        Treino t4= new Treino("peito4", 1);
-//        Treino t5= new Treino("peito5", 1);
-//        Treino t6= new Treino("peito6", 1);
-//        Exercicio ex = new Exercicio("supino", 1);
-//        Serie s = new Serie(10, 10);
-//        ex.addSerie(s);
-//        t1.addExercicio(ex);
-//        t7.addExercicio(ex);
-//        t2.addExercicio(ex);
-//        t3.addExercicio(ex);
-//        t4.addExercicio(ex);
-//        t5.addExercicio(ex);
-//        t6.addExercicio(ex);
-//        c.getTreinos().add(t1);
-//        c.getTreinos().add(t7);
-//        c.getTreinos().add(t2);
-//        c.getTreinos().add(t3);
-//        c.getTreinos().add(t4);
-//        c.getTreinos().add(t5);
-//        c.getTreinos().add(t6);
-//
-//        App.user.setCiclo(c);
-//
-//        App.fb.saveUserData(App.user);
 
+        userButton.setText(App.user.getUsername());
 
         try {
             DateUtils dt = new DateUtils();

@@ -7,6 +7,8 @@ import javafx.scene.control.TextField;
 import muscletrack.app.App;
 import muscletrack.app.model.User;
 
+import java.util.Objects;
+
 public class UserController {
 
     // Componentes da interface definidos no FXML
@@ -46,19 +48,21 @@ public class UserController {
         App.changeToLogin();
     }
 
-
-
     public void back_button_click() {App.changeToHome();}
 
     public void save_button_click() {
-        App.user.setEmail(emailField.getText());
-        App.user.setPassword(passwordField.getText());
         App.user.setUsername((nameField.getText()));
-
-        App.fb.changeUserEmail(App.user);
-        App.fb.changeUserPassword(App.user);
         App.fb.saveUserData(App.user);
 
+        if(!Objects.equals(App.user.getEmail(), emailField.getText())){
+            App.user.setEmail(emailField.getText());
+            if(!Objects.equals(App.user.getPassword(), passwordField.getText())){
+                App.user.setPassword(passwordField.getText());
+            }
+
+            App.fb.changeUserEmailAndPassword(App.user);
+            this.logout_button_click();
+        }
 
     }
 }
