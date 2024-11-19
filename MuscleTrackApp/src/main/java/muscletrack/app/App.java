@@ -27,9 +27,6 @@ public class App extends Application {
     private static Parent cadastroTreinoRealizadoPage;
     private static Stage stage;
 
-
-
-
     @Override
     public void start(Stage stage) throws IOException {
 

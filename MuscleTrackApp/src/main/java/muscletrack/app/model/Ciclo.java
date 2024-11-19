@@ -36,7 +36,6 @@ public class Ciclo implements FBRequestBodyConvertible {
     public Ciclo(int duracao, Date inicio) {
         this.duracao = duracao;
         this.inicio = inicio;
-        System.out.println(inicio);
         this.treinos = new ArrayList<>(duracao);
     }
 

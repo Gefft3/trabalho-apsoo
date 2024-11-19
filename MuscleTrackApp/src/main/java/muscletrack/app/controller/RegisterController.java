@@ -47,20 +47,6 @@ public class RegisterController {
                 passwordInput.setText("");
                 confirmPasswordInput.setText("");
 
-//                Ciclo c = new Ciclo(1, new Date());
-//                Treino t = new Treino("Peito", 1);
-//                Exercicio ex = new Exercicio("Supino Barra", 3);
-//                Serie s = new Serie(10, 12);
-//
-//                ex.addSerie(s);
-//                ex.addSerie(s);
-//                ex.addSerie(s);
-//                t.addExercicio(ex);
-//                c.getTreinos().add(t);
-//
-//                App.user.setCiclo(c);
-                System.out.println("CARA PQ?" + App.user.toFirebaseRequestBody());
-
                 App.fb.saveUserData(App.user);
 
                 App.changeToLogin();

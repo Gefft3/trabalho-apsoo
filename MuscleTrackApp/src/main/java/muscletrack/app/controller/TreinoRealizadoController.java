@@ -122,12 +122,10 @@ public class TreinoRealizadoController {
         t.setQntExercicios(qntExercicio);
 
         if(App.treinoRealizadoIndex == -1){
-            System.out.println("Não tinha entao vai criar um novo");
             TreinoRealizado tr = new TreinoRealizado(App.treinoRealizadoTimestamp);
             tr.setTreino(t);
             App.user.getTreinosRealizados().add(tr);
         }else{
-            System.out.println("Já tinha entao vai editar");
             App.user.getTreinosRealizados().get(App.treinoRealizadoIndex).setTreino(t);
         }
 

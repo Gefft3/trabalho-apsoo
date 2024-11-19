@@ -47,21 +47,13 @@ public class User {
 
         this.username = parser.getStringValue(parser.getKey("user_name", fields));
 
-        if (this.username == null) {
-            System.out.println("Não tem nome cadastrado ainda.");
-        }
-
         JSONObject treinosRealizadosJSON = parser.getKey("treinos_realizados", fields);
 
-        if (treinosRealizadosJSON == null) {
-            System.out.println("Não tem treinos realizados ainda.");
-        } else {
+        if (treinosRealizadosJSON != null) {
 
             JSONArray treinosRealizadosValues = parser.getArrayValues(treinosRealizadosJSON);
 
-            if(treinosRealizadosValues == null){
-                System.out.println("Não tem treinos realizados ainda");
-            }else{
+            if(treinosRealizadosValues != null){
 
                 for (int i = 0; i < treinosRealizadosValues.length(); i++) {
 
@@ -126,9 +118,7 @@ public class User {
 
         JSONObject ciclo = parser.getKey("ciclo", fields);
 
-        if (ciclo == null) {
-            System.out.println("Não tem ciclo cadastrado.");
-        } else {
+        if (ciclo != null) {
 
             JSONObject cicloFields = parser.getMapValue(parser.getKey("ciclo", fields));
 

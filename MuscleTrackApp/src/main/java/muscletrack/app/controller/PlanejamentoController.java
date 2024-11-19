@@ -163,8 +163,6 @@ public class PlanejamentoController {
             c.getInicio().setMinutes(0);
             c.getInicio().setSeconds(0);
 
-            System.out.println(c);
-
             if(!App.fb.saveUserData(App.user)){
                 System.out.println("Erro ao salvar alterações");
             }else{

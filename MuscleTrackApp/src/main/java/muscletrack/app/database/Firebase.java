@@ -75,12 +75,8 @@ public class Firebase {
 
             int responseCode = connection.getResponseCode();
 
-            System.out.println(responseCode);
-
             if (responseCode == 200) {
                 JSONObject responseJSON = readResponse(connection.getInputStream());
-
-                System.out.println(responseJSON);
 
                 u.loadFromJSON(responseJSON);
 
@@ -88,8 +84,6 @@ public class Firebase {
 
             }else{
                 JSONObject responseJSON = readResponse(connection.getInputStream());
-
-                System.out.println(responseJSON);
                 return false;
             }
 
@@ -113,8 +107,6 @@ public class Firebase {
             connection.setRequestProperty("Accept", "application/json");
             connection.setRequestProperty("Authorization", "Bearer " + u.getIdToken());
 
-            System.out.println(u.getIdToken());
-            System.out.println(u.getLocalID());
 
             JSONObject body = u.toFirebaseRequestBody();
 
@@ -125,14 +117,9 @@ public class Firebase {
 
             int responseCode = connection.getResponseCode();
 
-            System.out.println(responseCode);
-
             JSONObject responseJSON = readResponse(connection.getInputStream());
 
-            System.out.println(responseJSON);
-
             if (responseCode == 200) {
-                System.out.println("Data Saved!");
                 return true;
             }
 
@@ -210,10 +197,6 @@ public class Firebase {
                 u.setIdToken(responseJSON.getString("idToken"));
                 u.setLocalID(responseJSON.getString("localId"));
                 u.setRefreshToken(responseJSON.getString("refreshToken"));
-
-                System.out.println(u.getIdToken());
-
-                System.out.println(u.getLocalID());
                 return true;
             }
             return false;
@@ -255,7 +238,6 @@ public class Firebase {
                 u.setLocalID(responseJSON.getString("localId"));
                 u.setRefreshToken(responseJSON.getString("refreshToken"));
 
-                System.out.println(u.getLocalID());
                 System.out.println("Atualizou o email com sucesso");
                 return true;
             }

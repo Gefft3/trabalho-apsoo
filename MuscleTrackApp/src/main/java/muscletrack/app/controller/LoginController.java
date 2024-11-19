@@ -52,7 +52,6 @@ public class LoginController {
                 errorText.setText("E-mail e/ou senha incorretos");
                 passwordInput.setText("");
             } else {
-                System.out.println("Logado com sucesso!!!");
                 passwordInput.setText("");
                 emailInput.setText("");
                 App.changeToHome();

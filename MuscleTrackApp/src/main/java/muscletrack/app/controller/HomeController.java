@@ -93,8 +93,8 @@ public class HomeController {
             }
 
             updateTreinos(App.user);
-        } catch (IOException e) {
-            System.out.println(e);
+        } catch (IOException _) {
+
         }
     }
 
