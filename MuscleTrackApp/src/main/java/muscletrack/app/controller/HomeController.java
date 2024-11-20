@@ -151,7 +151,6 @@ public class HomeController {
                 dataCalendarioYMD = ano + "-" + mes + "-" + (diaCalendario + 1);
             }
 
-
             Date dataCalendario = dt.convertYmdToDate(dataCalendarioYMD);
 
             long diferenca = 0;

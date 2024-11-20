@@ -37,23 +37,26 @@ public class TreinoRealizadoController {
 
                 List<Exercicio> exercicioList = t.getExercicios();
 
-                for(Exercicio e : exercicioList){
+                if(exercicioList != null){
+                    for(Exercicio e : exercicioList){
 
-                    TreinoForm tf = new TreinoForm();
-                    tf.setTitulo(e.getNome());
+                        TreinoForm tf = new TreinoForm();
+                        tf.setTitulo(e.getNome());
 
-                    List<Serie> serieList = e.getSeries();
+                        List<Serie> serieList = e.getSeries();
 
-                    for(Serie s: serieList){
-                        RepCarga rc = new RepCarga();
-                        rc.setCarga(s.getPeso());
-                        rc.setRep(s.getRepeticoes());
+                        for(Serie s: serieList){
+                            RepCarga rc = new RepCarga();
+                            rc.setCarga(s.getPeso());
+                            rc.setRep(s.getRepeticoes());
 
-                        tf.addSerie(rc);
+                            tf.addSerie(rc);
+                        }
+
+                        cd.addTreinoForm(tf);
                     }
-
-                    cd.addTreinoForm(tf);
                 }
+
 
             }
 

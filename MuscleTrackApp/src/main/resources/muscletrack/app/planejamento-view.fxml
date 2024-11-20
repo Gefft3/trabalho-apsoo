@@ -33,8 +33,9 @@
             <VBox spacing="10" fx:id="planejamentoFormBox" styleClass="planejamento_form_box">
                 <GridPane styleClass="planejamento_form_header">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="50.0"/>
-                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="50.0"/>
+                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="15.0"/>
+                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="70.0"/>
+                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" percentWidth="15.0"/>
                     </columnConstraints>
                     <VBox GridPane.columnIndex="0"
                           GridPane.rowIndex="0" styleClass="rounded_button" alignment="CENTER_LEFT">
@@ -42,6 +43,13 @@
                     </VBox>
 
                     <VBox GridPane.columnIndex="1"
+                          GridPane.rowIndex="0" alignment="CENTER">
+                        <Label styleClass="input_label"> Data de início do ciclo </Label>
+                        <DatePicker fx:id="datePicker"/>
+                        <Label fx:id="errorLabel" visible="false" styleClass="error_label">Por favor, insira uma data de início</Label>
+                    </VBox>
+
+                    <VBox GridPane.columnIndex="2"
                           GridPane.rowIndex="0" styleClass="rounded_button" alignment="CENTER_RIGHT">
                         <Button styleClass="cadastrar_button" text="Cadastrar" onAction="#onCadastrarButtonClick"/>
                     </VBox>

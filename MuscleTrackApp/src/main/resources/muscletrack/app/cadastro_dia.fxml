@@ -28,6 +28,15 @@
                     <String fx:value="Costas"/>
                     <String fx:value="Braços"/>
                     <String fx:value="Pernas"/>
+                    <String fx:value="Ombros"/>
+                    <String fx:value="Abdômen"/>
+                    <String fx:value="Core"/>
+                    <String fx:value="Peito e Tríceps"/>
+                    <String fx:value="Peito e Ombro"/>
+                    <String fx:value="Costas e Bíceps"/>
+                    <String fx:value="Ombros e Trapézio"/>
+                    <String fx:value="Quadríceps e Panturrilhas"/>
+                    <String fx:value="Posterior e Glúteos"/>
                 </FXCollections>
             </items>
             <value>

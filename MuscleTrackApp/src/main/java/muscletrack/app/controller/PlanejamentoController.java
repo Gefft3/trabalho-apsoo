@@ -5,10 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -21,13 +18,20 @@ import muscletrack.app.model.Ciclo;
 import muscletrack.app.model.Exercicio;
 import muscletrack.app.model.Serie;
 import muscletrack.app.model.Treino;
+import muscletrack.app.utils.DateUtils;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 public class PlanejamentoController {
+    @FXML
+    public DatePicker datePicker;
+    @FXML
+    public Label errorLabel;
     private int duracao;
     @FXML
     public VBox planejamentoFormBox;
@@ -38,6 +42,7 @@ public class PlanejamentoController {
         if(ciclo != null){
 
             this.duracao = ciclo.getDuracao();
+            this.datePicker.setValue(ciclo.getInicioLocalDate());
 
             List<Treino> treinos = ciclo.getTreinos();
             if(treinos != null){
@@ -87,11 +92,18 @@ public class PlanejamentoController {
     }
 
     public void onCadastrarButtonClick(ActionEvent actionEvent) {
+
+        if(datePicker.getValue() == null){
+            errorLabel.setVisible(true);
+            return;
+        }
+
         Ciclo c = new Ciclo();
         c.setDuracao(this.duracao);
 
         if(c.getInicio() == null){
-            c.setInicio(new Date());
+            LocalDate ld = datePicker.getValue();
+            c.setInicio(Date.from(ld.atTime(20, 0, 0).atZone(ZoneId.systemDefault()).toInstant()));
         }
 
         ObservableList<Node> children = planejamentoFormBox.getChildren();

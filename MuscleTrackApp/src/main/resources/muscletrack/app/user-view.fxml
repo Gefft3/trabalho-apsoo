@@ -86,15 +86,15 @@
     <!-- Seção de Estatísticas -->
     <VBox GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="redirect_register_pane"
           maxWidth="400" minHeight="200">
-            <Label text="Desempenho Diário" styleClass="label_statistic"/>
-            <Label fx:id="dailyPerformanceLabel" text="0%" styleClass="stat_value" alignment="CENTER"/>
+            <Label text="Volume de séries diário" styleClass="label_statistic"/>
+            <Label fx:id="dailyPerformanceLabel" text="-" styleClass="stat_value" alignment="CENTER"/>
         </VBox>
 
         <!-- Desempenho por Ciclo -->
         <VBox  GridPane.columnIndex="1" GridPane.rowIndex="4" styleClass="redirect_register_pane"
                     maxWidth="400" minHeight="200">
-            <Label text="Desempenho por Ciclo" styleClass="label_statistic"/>
-            <Label fx:id="cyclePerformanceLabel" text="0%" styleClass="stat_value" alignment="CENTER"/>
+            <Label text="Volume de séries por ciclo" styleClass="label_statistic"/>
+            <Label fx:id="cyclePerformanceLabel" text="-" styleClass="stat_value" alignment="CENTER"/>
         
     </VBox>
     </GridPane>

@@ -1,9 +1,14 @@
 package muscletrack.app.model;
 
+import muscletrack.app.utils.DateUtils;
 import org.json.JSONObject;
 import muscletrack.app.database.FBRequestBodyConvertible;
 import muscletrack.app.database.FBRequestBodyFactory;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -98,6 +103,10 @@ public class Ciclo implements FBRequestBodyConvertible {
 
     public Date getInicio() {
         return inicio;
+    }
+
+    public LocalDate getInicioLocalDate(){
+        return Instant.ofEpochMilli(inicio.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
     public void setInicio(Date inicio) {
